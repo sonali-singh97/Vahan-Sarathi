@@ -1,0 +1,45 @@
+.card{
+    margin-bottom: 30px;
+    border: none;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    border-radius: 10px !important;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.input-div {
+   position: relative;
+
+    label{
+        padding: 0 10px;
+        color:#3F51B5;
+    }
+
+    & input{
+    border:none;
+    padding:0 10px;
+    
+    &::placeholder { 
+        color: #3F51B5;
+        opacity: 0.5; 
+      }
+
+    &:focus{
+        outline:none;
+        color: #3F51B5;
+    }
+}
+
+&::before{
+    content:"";
+    position: absolute;
+    width: 1px;
+    height: 25px;
+    background: rgba(#3F51B5,0.2);
+    left: 45px;
+    top: 0px;
+    z-index: 2;
+}
+}
