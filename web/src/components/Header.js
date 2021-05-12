@@ -10,15 +10,10 @@ return(
    </Col>
    
    <Col>
-   <InputGroup >
-    <InputGroup.Prepend>
-      <InputGroup.Text id="basic-addon1"><Search /></InputGroup.Text>
-    </InputGroup.Prepend>
-    <FormControl
-      placeholder="Search Buses"
-      aria-describedby="basic-addon1"
-    />
-  </InputGroup>
+    <div className="input-div">
+    <label> <Search /></label>
+    <input type="text" placeholder="Search Buses..."/>
+    </div>
   
    </Col>
 
