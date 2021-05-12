@@ -7,22 +7,22 @@ console.log(defaults.scale.title);
 defaults.scale.title.display = true;
 defaults.font.size = 9.5;
 
-function HumidityTime() {
+function AccelerationTime() {
   const [chartLabels, SetchartLebels] = useState([2, 4, 6, 8, 10, 12, 14]);
-  const [humidityValues, sethumidityValues] = useState([
-    10, 12, 9, 8, 13, 15, 10,
+  const [accelerationValues, setaccelerationValues] = useState([
+    22, 18, 5, 13, 9, 6, 2,
   ]);
 
   const [data, setdata] = useState({
     labels: chartLabels,
     datasets: [
       {
-        label: 'Humidity',
-        data: humidityValues,
+        label: 'Acceleration',
+        data: accelerationValues,
         fill: false,
-        lineTension: 0.5,
-        backgroundColor: '#7868e6',
-        borderColor: '#7868e6',
+        lineTension: 0.2,
+        backgroundColor: '#334443',
+        borderColor: '#334443',
         borderCapStyle: 'butt',
         borderDash: [],
         borderDashOffset: 0.0,
@@ -71,7 +71,7 @@ function HumidityTime() {
             yAxes: {
               title: {
                 display: true,
-                text: 'Humidity (g/m3)',
+                text: 'Acceleration(m/sec2)',
               },
               ticks: {
                 beginAtZero: true,
@@ -85,4 +85,4 @@ function HumidityTime() {
   );
 }
 
-export default HumidityTime;
+export default AccelerationTime;

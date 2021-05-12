@@ -5,7 +5,10 @@ import VelocityTime from './Charts/VelocityTime/VelocityTime'
 import HumidityTime from './Charts/HumidityTime/HumidityTime';
 import TemperatureTime from './Charts/TemperatureTime/TemperatureTime';
 import MaleFemaleRatio from './Charts/MaleFemaleRatio/MaleFemaleRatio';
-import MaskedUnmasked from './Charts/MaleFemaleRatio/MaleFemaleRatio';
+import MaskedUnmasked from './Charts/MaskedUnmasked/MaskedUnmasked';
+import AccelerationTime from './Charts/AccelerationTime/AccelerationTime';
+import Age from './Charts/Age/Age';
+import PressureTime from './Charts/PressureTime/PressureTime';
 // import Header from "./Header"
 
 const Layout = () => {
@@ -28,10 +31,13 @@ const Layout = () => {
         </Row>
         <Row>
           <VelocityTime />
+          <AccelerationTime />
           <TemperatureTime />
           <HumidityTime />
+          <PressureTime />
           <MaleFemaleRatio />
           <MaskedUnmasked />
+          <Age />
         </Row>
       </div>
     );

@@ -1,30 +1,34 @@
-import React, { useState } from 'react';
+import React ,{useState} from 'react';
 import { Doughnut, defaults } from 'react-chartjs-2';
 
 defaults.animation = false;
 defaults.scale.grid.display = false;
 console.log(defaults.scale.title);
 defaults.scale.title.display = true;
+defaults.font.size = 8
 
-function MaskedUnmasked() {
-  const [Masked, setmasked] = useState(32);
-  const [Unmasked, setUnmasked] = useState(18);
+function Age() {
+  const [age1, setage1] = useState(12);
+  const [age2, setage2] = useState(20);
+  const [age3, setage3] = useState(18);
+  const [age4, setage4] = useState(5);
   const [data, setdata] = useState({
-    labels: ['Masked', 'Unmasked'],
+    labels: ['Age1 - 0-17', 'Age2 - 18-30', 'Age3 - 31-55', 'Age4 - >56'],
     datasets: [
       {
-        label: 'Masked vs Unmasked',
-        data: [Masked, Unmasked],
-        backgroundColor: ['#23049d', '#aa2ee6'],
+        label: 'Different Age Ratio',
+        data: [age1, age2, age3, age4],
+        backgroundColor: ['#26001b', '#810034', '#ff005c', '#fff600'],
         hoverOffset: 4,
       },
     ],
   });
+
   return (
     <div
       style={{
-        width: '220px',
-        height: '240px',
+        width: '250px',
+        height: '250px',
         padding: '0.5rem',
         borderStyle: 'none',
         margin: '1rem',
@@ -46,4 +50,4 @@ function MaskedUnmasked() {
   );
 }
 
-export default MaskedUnmasked;
+export default Age;

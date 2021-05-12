@@ -7,22 +7,21 @@ console.log(defaults.scale.title);
 defaults.scale.title.display = true;
 defaults.font.size = 9.5;
 
-function HumidityTime() {
+function PressureTime() {
   const [chartLabels, SetchartLebels] = useState([2, 4, 6, 8, 10, 12, 14]);
-  const [humidityValues, sethumidityValues] = useState([
-    10, 12, 9, 8, 13, 15, 10,
+  const [pressureValues, setpressurevalues] = useState([
+    22, 1, 5, 3, 19, 6, 20,
   ]);
-
   const [data, setdata] = useState({
     labels: chartLabels,
     datasets: [
       {
-        label: 'Humidity',
-        data: humidityValues,
+        label: 'Pressure',
+        data: pressureValues,
         fill: false,
-        lineTension: 0.5,
-        backgroundColor: '#7868e6',
-        borderColor: '#7868e6',
+        lineTension: 0,
+        backgroundColor: '#8b5e83',
+        borderColor: '#8b5e83',
         borderCapStyle: 'butt',
         borderDash: [],
         borderDashOffset: 0.0,
@@ -40,7 +39,6 @@ function HumidityTime() {
       },
     ],
   });
-
   return (
     <div
       style={{
@@ -71,7 +69,7 @@ function HumidityTime() {
             yAxes: {
               title: {
                 display: true,
-                text: 'Humidity (g/m3)',
+                text: 'Pressure(atm)',
               },
               ticks: {
                 beginAtZero: true,
@@ -85,4 +83,4 @@ function HumidityTime() {
   );
 }
 
-export default HumidityTime;
+export default PressureTime;

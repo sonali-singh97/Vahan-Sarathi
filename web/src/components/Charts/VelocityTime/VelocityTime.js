@@ -10,42 +10,17 @@ defaults.font.size = 9.5;
 function VelocityTime() {
   const [chartLabels, SetchartLebels] = useState([2, 4, 6, 8, 10, 12, 14]);
   const [velocityValues, setvelocityValues] = useState([12, 8, 1, 3, 1, 6, 3]);
-  const [accelerationValues, setaccelerationValues] = useState([
-    22, 18, 5, 13, 9, 6, 2,
-  ]);
 
   const [data, setdata] = useState({
     labels: chartLabels,
     datasets: [
       {
-        label: 'Velocity Time',
+        label: 'Velocity',
         data: velocityValues,
         fill: false,
-        lineTension: 0.5,
+        lineTension: 0,
         backgroundColor: '#f21170',
         borderColor: '#f21170',
-        borderCapStyle: 'butt',
-        borderDash: [],
-        borderDashOffset: 0.0,
-        borderJoinStyle: 'miter',
-        pointBorderColor: 'rgba(75,192,192,1)',
-        pointBackgroundColor: '#fff',
-        pointBorderWidth: 1,
-        pointHoverRadius: 5,
-        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-        pointHoverBorderColor: 'rgba(220,220,220,1)',
-        pointHoverBorderWidth: 2,
-        pointRadius: 0,
-        pointHitRadius: 10,
-        borderWidth: 4,
-      },
-      {
-        label: 'Acceleration Time',
-        data: accelerationValues,
-        fill: false,
-        lineTension: 0.5,
-        backgroundColor: '#511281',
-        borderColor: '#511281',
         borderCapStyle: 'butt',
         borderDash: [],
         borderDashOffset: 0.0,
@@ -69,7 +44,7 @@ function VelocityTime() {
       style={{
         display: 'inline-block',
         width: '350px',
-        height: '200px',
+        height: '240px',
         padding: '0.5rem',
         borderStyle: 'none',
         margin: '1rem',
@@ -94,7 +69,7 @@ function VelocityTime() {
             yAxes: {
               title: {
                 display: true,
-                text: 'Velocity (m/sec) & Acceleration(m/sec2)',
+                text: 'Velocity (m/sec)',
               },
               ticks: {
                 beginAtZero: true,

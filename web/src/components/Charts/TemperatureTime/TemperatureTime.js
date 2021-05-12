@@ -17,7 +17,7 @@ function TemperatureTime() {
     labels: chartLabels,
     datasets: [
       {
-        label: 'Temperature Time',
+        label: 'Temperature',
         data: temperatureValues,
         fill: false,
         lineTension: 0.5,
@@ -46,7 +46,7 @@ function TemperatureTime() {
       style={{
         display: 'inline-block',
         width: '350px',
-        height: '200px',
+        height: '240px',
         padding: '0.5rem',
         borderStyle: 'none',
         margin: '1rem',
