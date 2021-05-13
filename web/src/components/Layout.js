@@ -14,7 +14,10 @@ import CountData from './CountData/CountData';
 // import Header from "./Header"
 
 const Layout = () => {
-  const [mapCenter, setMapCenter] = useState({ lat: 28.43603, lng: 77.01018 });
+  const [mapCenter, setMapCenter] = useState({
+    lat: 29.9844213,
+    lng: 76.584432,
+  });
   const [mapZoom, setMapZoom] = useState(13);
 
   return (
@@ -35,32 +38,33 @@ const Layout = () => {
         </Col>
       </Row>
       <Row>
-        <Col lg={5}>
-          <OverallPersonCount />
-        </Col>
-        <Col lg={7}>
-          <Row>
+        <Row>
+          <Col style={{ textAlign: 'center' }}>
+            <CountData name="Male" percentage={75} />
+          </Col>
+          <Col style={{ textAlign: 'center' }}>
+            <CountData name="Female" percentage={30} />
+          </Col>
+          <Col style={{ textAlign: 'center' }}>
+            <CountData name="With Mask" percentage={25} />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
             <MaleFemaleRatio />
+          </Col>
+          <Col>
             <MaskedUnmasked />
+          </Col>
+          <Col>
             <Age />
-          </Row>
-          <Row>
-            <Col>
-              <CountData name="Male" percentage={75} />
-            </Col>
-            <Col>
-              <CountData name="Female" percentage={30} />
-            </Col>
-            <Col>
-              <CountData name="With Mask" percentage={25} />
-            </Col>
-          </Row>
-        </Col>
+          </Col>
+        </Row>
       </Row>
       <Row>
         <VelocityTime />
         <AccelerationTime />
-        <TemperatureTime/>
+        <TemperatureTime />
         <HumidityTime />
         <PressureTime />
       </Row>

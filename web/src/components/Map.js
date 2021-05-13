@@ -5,10 +5,6 @@ import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { MapContainer, TileLayer, Marker, Popup,Tooltip} from 'react-leaflet';
 import L from 'leaflet';
 
-// for default marker icon , uncomment below lines and comment out icon_bus
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-
 import icon_bus from './../assets/icons/school-bus.svg'
 
 let DefaultIcon = L.icon({
