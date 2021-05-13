@@ -23,6 +23,7 @@ function MaleFemaleRatio() {
   return (
     <div
       style={{
+        display : 'inline-block',
         width: '220px',
         height: '240px',
         padding: '0.5rem',

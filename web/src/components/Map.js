@@ -3,7 +3,6 @@ import {Row, Col, Card} from "react-bootstrap";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 //import mapboxgl from '!mapbox-gl'; 
 import { MapContainer, TileLayer, Marker, Popup,Tooltip} from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
 // for default marker icon , uncomment below lines and comment out icon_bus
