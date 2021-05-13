@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Row, Col,InputGroup, FormControl } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import { LogIn, User, Minimize, Maximize, Search, Sun , Moon, HelpCircle  } from 'react-feather';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 const  Header = () => {
 
@@ -62,17 +62,18 @@ return(
 
    <Col>
    <div className="rightbar">
-   <span className="mode" onClick={() => ThemeToggle(theme)}>
-      {theme ? <Sun /> :
+   <span className="mode" >
+   <a className="text-dark" href="#" onClick={() => ThemeToggle(theme)} > {theme ? <Sun /> :
       <Moon />}
+      </a>
       </span>
        
-      <span ><HelpCircle  /></span>
+      <span ><a className="text-dark" href="#" ><HelpCircle  /></a></span>
 
-      <span className="maximize"><a className="text-dark" href="#javascript" onClick={goFull}> {fullScreen ? <Minimize /> : <Maximize />} </a></span>
+      <span className="maximize"><a className="text-dark" href="#" onClick={goFull}> {fullScreen ? <Minimize /> : <Maximize />} </a></span>
 
       <span>
-         Login / Signup
+       <Button type="primary" >Logout</Button>
       </span>
       </div>
    </Col>

@@ -1,8 +1,11 @@
 import React, {useRef, useEffect, useState, PureComponent} from 'react';
 import {Row, Col, Card} from "react-bootstrap";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import ReactMapGL, {Marker, Popup, NavigationControl,  CanvasOverlay} from 'react-map-gl';
+import ReactMapGL, {Marker, Popup, NavigationControl, Source, Layer} from 'react-map-gl';
 import Pin from "./Pin"
+import DeckGL from '@deck.gl/react';
+import {LineLayer} from '@deck.gl/layers';
+
 //import mapboxgl from 'mapbox-gl'; 
 
 //import { MapContainer, TileLayer, Marker, Popup,Tooltip} from 'react-leaflet';
@@ -221,6 +224,21 @@ const Maps = () => {
     // width:1000,
     // height: 500
   });
+  const geojson = {
+    type: 'FeatureCollection',
+    features: [
+      {type: 'Feature', geometry: {type: 'Point', coordinates: [29.9844213, 76.584432]}}
+    ]
+  };
+  
+  const layerStyle = {
+    id: 'point',
+    type: 'circle',
+    paint: {
+      'circle-radius': 10,
+      'circle-color': '#007cbf'
+    }
+  };
  
   const renderPopup = () => {
     //setPopupInfo(!popupInfo)
@@ -236,38 +254,40 @@ const Maps = () => {
     )
   }
 
+  const data = [
+    {sourcePosition: [29.9789633, 76.8923034], targetPosition: [29.9844213, 76.584432]}
+  ];
+  const layers = [
+    new LineLayer({id: 'line-layer', data})
+  ];
 
   return (
+    <DeckGL
+    initialViewState={viewport}
+    controller={true}
+    layers={layers}
+  >
     <ReactMapGL
       {...viewport}
       width="100%" height="500px"
-
-      mapStyle="mapbox://styles/mapbox/dark-v9"
       mapboxApiAccessToken={TOKEN}
       onViewportChange={(viewport) => setViewport(viewport)}>
       <div className="nav" style={navStyle}>
       <NavigationControl/>
       <Marker latitude={29.9844213} longitude={76.584432} offsetLeft={-20} offsetTop={-10}  >
-        {/* <img src={icon_bus} onClick={() => renderPopup} /> */}
             <Pin onClick={() => {
               
               setPopupInfo(!popupInfo)
              return renderPopup}}/>
           
           </Marker>
-        
-
-          {/* <PolylineOverlay points={[29.9844213,76.584432 ], [29.9841564, 76.5851455]} /> */}
+          <Source id="my-data" type="geojson" data={geojson}>
+        <Layer {...layerStyle} />
+      </Source>
 
       </div>
     </ReactMapGL>
-  //   <ReactMapGL
-  //   {...viewport}
-  //   width="100%"
-  //   height="100%"
-  //   mapboxApiAccessToken={TOKEN}
-  //   onViewportChange={(viewport) => setViewport(viewport)}
-  // />
+    </DeckGL>
 
   );
 }
