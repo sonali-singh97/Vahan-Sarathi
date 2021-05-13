@@ -1,23 +1,27 @@
 import React, {useRef, useEffect, useState, PureComponent} from 'react';
 import {Row, Col, Card} from "react-bootstrap";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import ReactMapGL, {Marker, Popup, NavigationControl, Source, Layer} from 'react-map-gl';
+//import ReactMapGL, {Marker, Popup, NavigationControl, Source, Layer} from 'react-map-gl';
 import Pin from "./Pin"
 import DeckGL from '@deck.gl/react';
 import {LineLayer} from '@deck.gl/layers';
 
 //import mapboxgl from 'mapbox-gl'; 
 
-//import { MapContainer, TileLayer, Marker, Popup,Tooltip} from 'react-leaflet';
-//import 'leaflet/dist/leaflet.css';
-//import L from 'leaflet';
+// import { MapContainer, TileLayer, Marker, Popup,Tooltip} from 'react-leaflet';
+// import 'leaflet/dist/leaflet.css';
+// import L from 'leaflet';
 
 
-// import icon from 'leaflet/dist/images/marker-icon.png';
-// import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
 
- import icon_bus from './../assets/icons/school-bus.svg'
+
+import { MapContainer, TileLayer, Marker, Popup,Tooltip} from 'react-leaflet';
+import L from 'leaflet';
+
+import icon_bus from './../assets/icons/school-bus.svg'
 
 
 
@@ -88,37 +92,75 @@ import {LineLayer} from '@deck.gl/layers';
 // />)
 // }
 
-// let DefaultIcon = L.icon({
-//   iconUrl: icon_bus,
-//   shadowUrl: null,
-//   iconSize : 45
-// });
+let DefaultIcon = L.icon({
+  iconUrl: icon_bus,
+  shadowUrl: null,
+  iconSize : 45
+});
 
-// L.Marker.prototype.options.icon = DefaultIcon;
+L.Marker.prototype.options.icon = DefaultIcon;
 
 
-// const Map = (props) => {
-//   return (
-//     <div className="map">
-//       <MapContainer
-//         center={props.center}
-//         zoom={props.zoom}
-//         scrollWheelZoom={false}
-//       >
-//         <TileLayer
-//           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-//           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-//         />
-//         <Marker position={props.center}>
-//           <Popup>
-//             A pretty CSS3 popup. <br /> Easily customizable.
-//           </Popup>
-//           <Tooltip>{props.tooltip}</Tooltip>
-//         </Marker>
-//       </MapContainer>
-//     </div>
-//   );
-// }
+const Maps = (props) => {
+
+//     useEffect(async() => {
+//     console.log("app")
+//     var sse = new EventSource("http://a64f67c071f7.ngrok.io/stream-logs",{withCredentials: true})
+//     console.log(sse);
+//     sse.onopen = e => {
+//       console.log(e);
+//     }
+  
+//   sse.onmessage =  function(event) {
+//     //document.getElementById("logs").innerHTML += event.data + "<br>";
+//     console.log(event.data)
+//     console.log("app2")
+//   };
+
+//   sse.onerror = (e) => {
+//     // error log here 
+//     console.log(e)
+  
+//   }
+//   sse.close();
+
+
+// }, [])
+//   // sse.close();
+
+const fetchData = () => {
+      var sse = new EventSource("http://localhost:8000/stream",{withCredentials: true})
+    console.log(sse);
+
+  sse.onmessage =  function(event) {
+    console.log(event.data)
+    console.log("app2")
+  };
+}
+
+fetchData()
+
+  return (
+    <div className="map">
+      <MapContainer
+        center={props.center}
+        zoom={props.zoom}
+        scrollWheelZoom={false}
+      >
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={props.center}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+          <Tooltip>{props.tooltip}</Tooltip>
+        </Marker>
+      </MapContainer>
+    </div>
+  );
+}
 
 
 /*********mapbox *******/
@@ -176,121 +218,121 @@ import {LineLayer} from '@deck.gl/layers';
 // }
 
 
-const TOKEN = 'pk.eyJ1Ijoic29uYWxpLXNpbmdoIiwiYSI6ImNrb2R1aGxhMDA1eDcyb3FnMDZhemNhOGwifQ.pfXWKE9Q-U1Pe_tM5-eMnw';
-const navStyle = {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  padding: '10px'
-};
+// const TOKEN = 'pk.eyJ1Ijoic29uYWxpLXNpbmdoIiwiYSI6ImNrb2R1aGxhMDA1eDcyb3FnMDZhemNhOGwifQ.pfXWKE9Q-U1Pe_tM5-eMnw';
+// const navStyle = {
+//   position: 'absolute',
+//   top: 0,
+//   left: 0,
+//   padding: '10px'
+// };
 
 
-const Maps = () => {
+// const Maps = () => {
 
-  useEffect(async() => {
-    console.log("app")
-    let sse = new EventSource("http://pravega-test.centralindia.cloudapp.azure.com:8000/stream",{withCredentials: true})
+//   useEffect(async() => {
+//     console.log("app")
+//     let sse = new EventSource("http://pravega-test.centralindia.cloudapp.azure.com:8000/stream",{withCredentials: true})
     
-    sse.onopen = e => {
-      console.log(e);
-    }
+//     sse.onopen = e => {
+//       console.log(e);
+//     }
   
-  sse.onmessage =  function(event) {
-    //document.getElementById("logs").innerHTML += event.data + "<br>";
-    console.log(event.data)
-    console.log("app2")
-  };
+//   sse.onmessage =  function(event) {
+//     //document.getElementById("logs").innerHTML += event.data + "<br>";
+//     console.log(event.data)
+//     console.log("app2")
+//   };
 
-  sse.onerror = (e) => {
-    // error log here 
-    console.log(e)
+//   sse.onerror = (e) => {
+//     // error log here 
+//     console.log(e)
   
-  }
-  // sse.close();
+//   }
+//   // sse.close();
 
 
 
 
 
-  }, [])
+//   }, [])
 
-  const [popupInfo,  setPopupInfo] = useState(null);
-  const [viewport, setViewport] = useState({
-    latitude: 29.9844213,
-    longitude: 76.584432,
-    zoom: 8,
-    bearing: 0,
-    pitch: 0,
-    // width:1000,
-    // height: 500
-  });
-  const geojson = {
-    type: 'FeatureCollection',
-    features: [
-      {type: 'Feature', geometry: {type: 'Point', coordinates: [29.9844213, 76.584432]}}
-    ]
-  };
+//   const [popupInfo,  setPopupInfo] = useState(null);
+//   const [viewport, setViewport] = useState({
+//     latitude: 29.9844213,
+//     longitude: 76.584432,
+//     zoom: 8,
+//     bearing: 0,
+//     pitch: 0,
+//     // width:1000,
+//     // height: 500
+//   });
+//   const geojson = {
+//     type: 'FeatureCollection',
+//     features: [
+//       {type: 'Feature', geometry: {type: 'Point', coordinates: [29.9844213, 76.584432]}}
+//     ]
+//   };
   
-  const layerStyle = {
-    id: 'point',
-    type: 'circle',
-    paint: {
-      'circle-radius': 10,
-      'circle-color': '#007cbf'
-    }
-  };
+//   const layerStyle = {
+//     id: 'point',
+//     type: 'circle',
+//     paint: {
+//       'circle-radius': 10,
+//       'circle-color': '#007cbf'
+//     }
+//   };
  
-  const renderPopup = () => {
-    //setPopupInfo(!popupInfo)
-    return popupInfo && (
-      <Popup tipSize={5}
-        anchor="bottom-right"
-        longitude={this.state.popupInfo.state.longitude}
-        latitude={this.state.popupInfo.state.latitude}
-        onClose={() => this.setState({popupInfo: null})}
-        closeOnClick={true}>
-        <p>{"Title"}</p>
-      </Popup>
-    )
-  }
+//   const renderPopup = () => {
+//     //setPopupInfo(!popupInfo)
+//     return popupInfo && (
+//       <Popup tipSize={5}
+//         anchor="bottom-right"
+//         longitude={this.state.popupInfo.state.longitude}
+//         latitude={this.state.popupInfo.state.latitude}
+//         onClose={() => this.setState({popupInfo: null})}
+//         closeOnClick={true}>
+//         <p>{"Title"}</p>
+//       </Popup>
+//     )
+//   }
 
-  const data = [
-    {sourcePosition: [29.9789633, 76.8923034], targetPosition: [29.9844213, 76.584432]}
-  ];
-  const layers = [
-    new LineLayer({id: 'line-layer', data})
-  ];
+//   const data = [
+//     {sourcePosition: [29.9789633, 76.8923034], targetPosition: [29.9844213, 76.584432]}
+//   ];
+//   const layers = [
+//     new LineLayer({id: 'line-layer', data})
+//   ];
 
-  return (
-    <DeckGL
-    initialViewState={viewport}
-    controller={true}
-    layers={layers}
-  >
-    <ReactMapGL
-      {...viewport}
-      width="100%" height="500px"
-      mapboxApiAccessToken={TOKEN}
-      onViewportChange={(viewport) => setViewport(viewport)}>
-      <div className="nav" style={navStyle}>
-      <NavigationControl/>
-      <Marker latitude={29.9844213} longitude={76.584432} offsetLeft={-20} offsetTop={-10}  >
-            <Pin onClick={() => {
+//   return (
+//   //   <DeckGL
+//   //   initialViewState={viewport}
+//   //   controller={true}
+//   //   layers={layers}
+//   // >
+//     <ReactMapGL
+//       {...viewport}
+//       width="100%" height="500px"
+//       mapboxApiAccessToken={TOKEN}
+//       onViewportChange={(viewport) => setViewport(viewport)}>
+//       <div className="nav" style={navStyle}>
+//       <NavigationControl/>
+//       <Marker latitude={29.9844213} longitude={76.584432} offsetLeft={-20} offsetTop={-10}  >
+//             <Pin onClick={() => {
               
-              setPopupInfo(!popupInfo)
-             return renderPopup}}/>
+//               setPopupInfo(!popupInfo)
+//              return renderPopup}}/>
           
-          </Marker>
-          <Source id="my-data" type="geojson" data={geojson}>
-        <Layer {...layerStyle} />
-      </Source>
+//           </Marker>
+//           <Source id="my-data" type="geojson" data={geojson}>
+//         <Layer {...layerStyle} />
+//       </Source>
 
-      </div>
-    </ReactMapGL>
-    </DeckGL>
+//       </div>
+//     </ReactMapGL>
+//     // </DeckGL>
 
-  );
-}
+//   );
+// }
 
 /******with google maps api ****/
 

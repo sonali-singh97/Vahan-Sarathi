@@ -5,7 +5,7 @@ defaults.animation = false;
 defaults.scale.grid.display = false;
 console.log(defaults.scale.title);
 defaults.scale.title.display = true;
-defaults.font.size = 8
+defaults.font.size = 7
 
 function Age() {
   const [age1, setage1] = useState(12);
@@ -27,8 +27,9 @@ function Age() {
   return (
     <div
       style={{
-        width: '250px',
-        height: '250px',
+        display : 'inline-block',
+        width: '220px',
+        height: '240px',
         padding: '0.5rem',
         borderStyle: 'none',
         margin: '1rem',

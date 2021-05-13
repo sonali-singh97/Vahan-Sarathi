@@ -67,7 +67,7 @@ return(
       <Moon />}
       </a>
       </span>
-       
+      
       <span ><a className="text-dark" href="#" ><HelpCircle  /></a></span>
 
       <span className="maximize"><a className="text-dark" href="#" onClick={goFull}> {fullScreen ? <Minimize /> : <Maximize />} </a></span>

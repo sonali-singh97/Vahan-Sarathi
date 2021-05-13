@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { Line, defaults } from 'react-chartjs-2';
 
 defaults.animation = false;
-defaults.scale.grid.display = false;
 console.log(defaults.scale.title);
 defaults.scale.title.display = true;
-defaults.font.size = 9.5;
+defaults.font.size = 11;
 
 function HumidityTime() {
   const [chartLabels, SetchartLebels] = useState([2, 4, 6, 8, 10, 12, 14]);
@@ -45,8 +44,8 @@ function HumidityTime() {
     <div
       style={{
         display: 'inline-block',
-        width: '350px',
-        height: '240px',
+        width: '450px',
+        height: '300px',
         padding: '0.5rem',
         borderStyle: 'none',
         margin: '1rem',

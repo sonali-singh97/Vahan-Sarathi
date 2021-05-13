@@ -1,9 +1,19 @@
-.wrapper{
-    padding: 22px 30px;
+.wrapper {
+  padding: 22px 30px;
 }
-.page-body{
-    min-height: calc(100vh - 80px);
-    margin-top: 80px;
+.page-body {
+  min-height: calc(100vh - 80px);
+  margin-top: 80px;
+}
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  padding: 22px 30px;
+  z-index: 10;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 .header{
    width: 100%;
