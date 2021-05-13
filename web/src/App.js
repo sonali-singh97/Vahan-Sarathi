@@ -3,7 +3,9 @@ import Header from "./components/Header"
 import Layout from "./components/Layout"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCheckSquare, faCoffee, faLightbulb, faQuestionCircle} from '@fortawesome/free-solid-svg-icons'
-import "leaflet/dist/leaflet.css"
+//import "leaflet/dist/leaflet.css"
+
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 library.add( faCheckSquare, faCoffee , faLightbulb, faQuestionCircle)
 
