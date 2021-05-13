@@ -4,12 +4,12 @@
 
 
 /**** base ****/
-@import "base/typography";
 @import "base/base";
 
 /**** components ****/
 @import "layout/page-layout";
-@import "components/card"
+@import "components/card";
+@import "components/map";
 
 
 /**** themes ****/
