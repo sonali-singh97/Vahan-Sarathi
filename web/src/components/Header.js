@@ -1,48 +1,59 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Row, Col, Button } from "react-bootstrap";
-import { LogIn, User, Minimize, Maximize, Search, Sun , Moon, HelpCircle  } from 'react-feather';
-import DataContext from "../context/Data";
+import React, { useState, useContext, useEffect } from 'react';
+import { Row, Col, Button } from 'react-bootstrap';
+import {
+  LogIn,
+  User,
+  Minimize,
+  Maximize,
+  Search,
+  Sun,
+  Moon,
+  HelpCircle,
+} from 'react-feather';
+import DataContext from '../context/Data';
 
-const  Header = () => {
+const Header = () => {
+  const [theme, setTheme] = useState(false);
+  const [fullScreen, setFullScreen] = useState(false);
+  const { data, setData } = useContext(DataContext);
 
-   const [theme, setTheme] = useState(false)
-   const [ fullScreen, setFullScreen] = useState(false)
-   const {data, setData} = useContext(DataContext);
-
-   useEffect(()=> {
-    var sse = new EventSource("http://localhost:8000/stream",{withCredentials: true})
+  useEffect(() => {
+    var sse = new EventSource('http://localhost:8000/stream', {
+      withCredentials: true,
+    });
     console.log(sse);
 
-  sse.onmessage =  function(event) {
-    console.log(decodeURIComponent(escape(event.data)))
-    setData(event.data)
-    console.log("app2")
-  };
-   }, [])
-   
+    sse.onmessage = function (event) {
+      console.log(decodeURIComponent(escape(event.data)));
+      setData(event.data);
+      console.log('app2');
+    };
+  }, []);
 
-     /*** Theme toggle ******/
-   const ThemeToggle = (light) => {
-      if (light) {
-        setTheme(!light)
-        document.body.className = "light"
-        localStorage.setItem('layout_version', 'light');
-      } else {
-        setTheme(!light)
-        document.body.className = "dark"
-        localStorage.setItem('layout_version', 'dark');
-      }
+  /*** Theme toggle ******/
+  const ThemeToggle = (light) => {
+    if (light) {
+      setTheme(!light);
+      document.body.className = 'light';
+      localStorage.setItem('layout_version', 'light');
+    } else {
+      setTheme(!light);
+      document.body.className = 'dark';
+      localStorage.setItem('layout_version', 'dark');
     }
+  };
 
-    /***Full screen toggle ******/
-    const goFull = () => {
-      if (!fullScreen) {
+  /***Full screen toggle ******/
+  const goFull = () => {
+    if (!fullScreen) {
       if (document.documentElement.requestFullScreen) {
         document.documentElement.requestFullScreen();
       } else if (document.documentElement.mozRequestFullScreen) {
         document.documentElement.mozRequestFullScreen();
       } else if (document.documentElement.webkitRequestFullScreen) {
-        document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+        document.documentElement.webkitRequestFullScreen(
+          Element.ALLOW_KEYBOARD_INPUT
+        );
       }
       setFullScreen(true);
     } else {
@@ -55,43 +66,59 @@ const  Header = () => {
       }
       setFullScreen(false);
     }
-    }
+  };
 
-return(
-   <div className="header">
-   <Row>
-   <Col>
-   <h4>Dashboard</h4>
-   </Col>
-   
-   <Col>
-    <div className="input-div">
-    <label> <Search /></label>
-    <input type="text" placeholder="Search Buses..."/>
+  return (
+    <div className="header">
+      <Row>
+        <Col>
+          <h4>Dashboard</h4>
+        </Col>
+
+        <Col>
+          <div className="input-div">
+            <label>
+              {' '}
+              <Search />
+            </label>
+            <input type="text" placeholder="Search Buses..." />
+          </div>
+        </Col>
+
+        <Col>
+          <div className="rightbar">
+            <span className="mode">
+              <a
+                className="text-dark"
+                href="#"
+                onClick={() => ThemeToggle(theme)}
+              >
+                {' '}
+                {theme ? <Sun /> : <Moon />}
+              </a>
+            </span>
+
+            <span>
+              <a className="text-dark" href="#">
+                <HelpCircle />
+              </a>
+            </span>
+
+            <span className="maximize">
+              <a className="text-dark" href="#" onClick={goFull}>
+                {' '}
+                {fullScreen ? <Minimize /> : <Maximize />}{' '}
+              </a>
+            </span>
+
+            <span>
+              <Button type="primary">Logout</Button>
+            </span>
+          </div>
+        </Col>
+      </Row>
     </div>
-  
-   </Col>
-
-   <Col>
-   <div className="rightbar">
-   <span className="mode" >
-   <a className="text-dark" href="#" onClick={() => ThemeToggle(theme)} > {theme ? <Sun /> :
-      <Moon />}
-      </a>
-      </span>
-      
-      <span ><a className="text-dark" href="#" ><HelpCircle  /></a></span>
-
-      <span className="maximize"><a className="text-dark" href="#" onClick={goFull}> {fullScreen ? <Minimize /> : <Maximize />} </a></span>
-
-      <span>
-       <Button type="primary" >Logout</Button>
-      </span>
-      </div>
-   </Col>
-   </Row>
-   </div> 
-)
-}
+  );
+};
 
 export default Header;
