@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { LogIn, User, Minimize, Maximize, Search, Sun , Moon, HelpCircle  } from 'react-feather';
-
+import DataContext from "../context/Data";
 
 const  Header = () => {
 
    const [theme, setTheme] = useState(false)
    const [ fullScreen, setFullScreen] = useState(false)
+   const {data, setData} = useContext(DataContext);
 
+   useEffect(()=> {
+    var sse = new EventSource("http://localhost:8000/stream",{withCredentials: true})
+    console.log(sse);
+
+  sse.onmessage =  function(event) {
+    console.log(decodeURIComponent(escape(event.data)))
+    setData(event.data)
+    console.log("app2")
+  };
+   }, [])
+   
 
      /*** Theme toggle ******/
    const ThemeToggle = (light) => {

@@ -2,21 +2,11 @@ import React, {useRef, useEffect, useState, PureComponent} from 'react';
 import {Row, Col, Card} from "react-bootstrap";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 //import ReactMapGL, {Marker, Popup, NavigationControl, Source, Layer} from 'react-map-gl';
-import Pin from "./Pin"
-import DeckGL from '@deck.gl/react';
-import {LineLayer} from '@deck.gl/layers';
+// import Pin from "./Pin"
+// import DeckGL from '@deck.gl/react';
+// import {LineLayer} from '@deck.gl/layers';
 
 //import mapboxgl from 'mapbox-gl'; 
-
-// import { MapContainer, TileLayer, Marker, Popup,Tooltip} from 'react-leaflet';
-// import 'leaflet/dist/leaflet.css';
-// import L from 'leaflet';
-
-
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-
-
 
 import { MapContainer, TileLayer, Marker, Popup,Tooltip} from 'react-leaflet';
 import L from 'leaflet';
@@ -128,17 +118,17 @@ const Maps = (props) => {
 // }, [])
 //   // sse.close();
 
-const fetchData = () => {
-      var sse = new EventSource("http://localhost:8000/stream",{withCredentials: true})
-    console.log(sse);
+// const fetchData = () => {
+//       var sse = new EventSource("http://localhost:8000/stream",{withCredentials: true})
+//     console.log(sse);
 
-  sse.onmessage =  function(event) {
-    console.log(event.data)
-    console.log("app2")
-  };
-}
+//   sse.onmessage =  function(event) {
+//     console.log(event.data)
+//     console.log("app2")
+//   };
+// }
 
-fetchData()
+// fetchData()
 
   return (
     <div className="map">
