@@ -21,7 +21,7 @@ const Layout = () => {
                 <Col lg={8}>
                     <Card>
                         <Card.Body>
-                            <Map center={mapCenter} zoom={mapZoom} />
+                            <Map center={mapCenter} zoom={mapZoom}  tooltip="Location name"/>
                         </Card.Body>
                     </Card>
                 </Col>
