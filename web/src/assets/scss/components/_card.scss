@@ -4,7 +4,6 @@
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     letter-spacing: 0.5px;
-    border:none;
     border-radius: 10px !important;
     -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -12,10 +11,14 @@
 
 
 .info{
+
+    .card{
+        border:none ;
+    }
+
     .route  {
      background-color: rgba($primary-color,0.3);
      color: $primary-color;
-
      &-stops{
          display: flex;
          justify-content: space-between;

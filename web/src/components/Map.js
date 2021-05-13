@@ -3,6 +3,7 @@ import {Row, Col, Card} from "react-bootstrap";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 //import mapboxgl from '!mapbox-gl'; 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
 
 const Map = (props) => {
