@@ -6,7 +6,34 @@
     letter-spacing: 0.5px;
     border-radius: 10px !important;
     -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.info{
+
+    .card{
+        border:none ;
+    }
+
+    .route  {
+     background-color: rgba($primary-color,0.3);
+     color: $primary-color;
+     &-stops{
+         display: flex;
+         justify-content: space-between;
+         align-items: middle;
+     }
+    }
+    .current-stop {
+    background-color: rgba($secondary-color,0.3);
+    color: $secondary-color;
+    }
+
+    .eta {
+    background-color: rgba($info-color,0.3);
+    color: $info-color;
+    }
 }
 
 .input-div {
@@ -22,13 +49,13 @@
     padding:0 10px;
     
     &::placeholder { 
-        color: #3F51B5;
+        color: $primary-color;
         opacity: 0.5; 
       }
 
     &:focus{
         outline:none;
-        color: #3F51B5;
+        color: $primary-color;
     }
 }
 
@@ -37,7 +64,7 @@
     position: absolute;
     width: 1px;
     height: 25px;
-    background: rgba(#3F51B5,0.2);
+    background: rgba($primary-color,0.2);
     left: 45px;
     top: 0px;
     z-index: 2;

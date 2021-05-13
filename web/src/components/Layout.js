@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Row, Col, Card, Container } from 'react-bootstrap';
 import Map from './Map';
+import CurrentInfo from "./CurrentInfo";
 import VelocityTime from './Charts/VelocityTime/VelocityTime';
 import HumidityTime from './Charts/HumidityTime/HumidityTime';
 import TemperatureTime from './Charts/TemperatureTime/TemperatureTime';
@@ -14,11 +15,8 @@ import CountData from './CountData/CountData';
 // import Header from "./Header"
 
 const Layout = () => {
-  const [mapCenter, setMapCenter] = useState({
-    lat: 29.9844213,
-    lng: 76.584432,
-  });
-  const [mapZoom, setMapZoom] = useState(13);
+    const [mapCenter, setMapCenter] = useState({lat: 28.436030 ,  lng: 77.010180})
+    const [mapZoom, setMapZoom] = useState(20)
 
   return (
     <div className="page-body">
@@ -32,9 +30,7 @@ const Layout = () => {
         </Col>
 
         <Col lg={4}>
-          <Card>
-            <Card.Body>Route</Card.Body>
-          </Card>
+         <CurrentInfo />
         </Col>
       </Row>
       <Row>
