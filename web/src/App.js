@@ -8,21 +8,24 @@ import "leaflet/dist/leaflet.css"
 import 'mapbox-gl/dist/mapbox-gl.css';
 import DataContext from './context/Data';
 
-const ThemeContext = React.createContext('light');
+import ThemeContext from './context/darkTheme';
 
 function App() {
 
   const [data, setData] = useState(null)
+  const [theme, setTheme] = useState(false)
 
   return (
+    <ThemeContext.Provider value={{theme, setTheme}}>
     <DataContext.Provider value={{data, setData}}>
-      <Container fluid>
+      <Container fluid >
          <Header />
         <div className="wrapper">
          <Layout />
         </div>
       </Container>
       </DataContext.Provider>
+      </ThemeContext.Provider>
 
   );
 }

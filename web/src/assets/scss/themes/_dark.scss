@@ -1,0 +1,11 @@
+body {
+     &.dark{
+  
+        background-color: $dark-body-background;
+        
+
+        .card {
+            background: $dark-card-background;
+        }
+}
+}

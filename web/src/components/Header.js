@@ -2,10 +2,11 @@ import React, { useState, useContext, useEffect } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { LogIn, User, Minimize, Maximize, Search, Sun , Moon, HelpCircle  } from 'react-feather';
 import DataContext from "../context/Data";
+import ThemeContext from "../context/darkTheme";
 
 const  Header = () => {
 
-   const [theme, setTheme] = useState(false)
+   const {theme, setTheme} = useContext(ThemeContext)
    const [ fullScreen, setFullScreen] = useState(false)
    const {data, setData} = useContext(DataContext);
 
@@ -26,11 +27,9 @@ const  Header = () => {
       if (light) {
         setTheme(!light)
         document.body.className = "light"
-        localStorage.setItem('layout_version', 'light');
       } else {
         setTheme(!light)
         document.body.className = "dark"
-        localStorage.setItem('layout_version', 'dark');
       }
     }
 
@@ -88,6 +87,7 @@ return(
        <Button type="primary" >Logout</Button>
       </span>
       </div>
+      {console.log(data)}
    </Col>
    </Row>
    </div> 
