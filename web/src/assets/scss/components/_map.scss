@@ -7,10 +7,22 @@
 //     }
 // }
 
-.map {
-  height: 500px;
+// .map {
+//   height: 500px;
 
-  .leaflet-container {
-    height: 100%;
+//   .leaflet-container {
+//     height: 100%;
+//     z-index: 0;
+//   }
+// }
+
+.mapboxgl-popup-content{
+.stops.info{
+  width: 250px;
+
+  image{
+   max-width: 100%;
   }
 }
+}
+

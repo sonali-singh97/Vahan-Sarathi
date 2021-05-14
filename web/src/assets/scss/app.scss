@@ -1,3 +1,5 @@
+@import '~react-pro-sidebar/dist/scss/styles.scss';
+
 /**** utils ****/
 @import "utils/variables";
 
@@ -11,6 +13,7 @@
 @import "components/card";
 @import "components/map";
 @import "components/button";
+@import "components/sidebar";
 
 
 /**** themes ****/
