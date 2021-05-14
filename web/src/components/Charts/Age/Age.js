@@ -23,6 +23,11 @@ function Age() {
         hoverOffset: 4,
       },
     ],
+    options : {
+      legend :{
+        display : false
+      }
+    }
   });
 
   return (
@@ -31,6 +36,7 @@ function Age() {
         display: 'flex',
         flexDirection: 'row',
         width: '400px',
+        height: '240px',
         padding: '1rem',
         borderStyle: 'none',
         margin: '1rem',
@@ -39,11 +45,13 @@ function Age() {
           'rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset',
       }}
     >
-      <div style={{ width: '250px', height: '250px', display: 'inline-block' }}>
+      <div style={{ width: '200px', height: '240px', display: 'inline-block' }}>
         <Doughnut
           data={data}
           options={{
-            maintainAspectRatio: false,
+            legend: {
+              display: false,
+            },
           }}
           redraw={false}
         />
