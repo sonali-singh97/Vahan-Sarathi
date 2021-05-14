@@ -4,12 +4,14 @@ import { LogIn, User, Minimize, Maximize, Search, Sun , Moon, HelpCircle  } from
 import DataContext from "../context/Data";
 import ThemeContext from "../context/darkTheme";
 import utf8 from "utf8";
+import { useAuth0 } from '@auth0/auth0-react';
 
-const  Header = () => {
+const Header = () => {
+  const [theme, setTheme] = useState(false);
+  const [fullScreen, setFullScreen] = useState(false);
+  const { data, setData } = useContext(DataContext);
 
-   const {theme, setTheme} = useContext(ThemeContext)
-   const [ fullScreen, setFullScreen] = useState(false)
-   const {data, setData} = useContext(DataContext);
+
 
 
   const apiData = "{\"vtype\": 0, \"vechn\": 1, \"routen\": 1, \"altitude\": 266, \"lat\": 29.9606722, \"lon\": 76.7828693, \"time\": \"20:45:23\", \"date\": \"13/05/2021\", \"count\": 50, \"countmask\": 38, \"nomask\": 12, \"countmale\": 33, \"countfemale\": 17, \"isstop\": false, \"laststop\": 15, \"currentstop\": null, \"nextstop\": 7, \"tempi\": 36.01, \"humidi\": 46, \"pressurei\": 1000, \"velocity\": 37.0, \"age1\": 15, \"age2\": 14, \"age3\": 19, \"age4\": 2}"
@@ -48,16 +50,19 @@ const  Header = () => {
         document.body.className = "dark"
       }
     }
+  
 
-    /***Full screen toggle ******/
-    const goFull = () => {
-      if (!fullScreen) {
+  /***Full screen toggle ******/
+  const goFull = () => {
+    if (!fullScreen) {
       if (document.documentElement.requestFullScreen) {
         document.documentElement.requestFullScreen();
       } else if (document.documentElement.mozRequestFullScreen) {
         document.documentElement.mozRequestFullScreen();
       } else if (document.documentElement.webkitRequestFullScreen) {
-        document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+        document.documentElement.webkitRequestFullScreen(
+          Element.ALLOW_KEYBOARD_INPUT
+        );
       }
       setFullScreen(true);
     } else {
@@ -70,7 +75,8 @@ const  Header = () => {
       }
       setFullScreen(false);
     }
-    }
+  };
+  const { logout } = useAuth0();
 
 return(
    <div className="header">
@@ -85,27 +91,52 @@ return(
   
    </Col>
 
-   <Col>
-   <div className="rightbar">
-   <span className="mode" >
-   <a className="text-dark" href="#" onClick={() => ThemeToggle(theme)} > {theme ? <Sun /> :
-      <Moon />}
-      </a>
-      </span>
-      
-      <span ><a className="text-dark" href="#" ><HelpCircle  /></a></span>
+        <Col>
+          <div className="input-div">
+            <label>
+              {' '}
+              <Search />
+            </label>
+            <input type="text" placeholder="Search Buses..." />
+          </div>
+        </Col>
 
-      <span className="maximize"><a className="text-dark" href="#" onClick={goFull}> {fullScreen ? <Minimize /> : <Maximize />} </a></span>
+        <Col>
+          <div className="rightbar">
+            <span className="mode">
+              <a
+                className="text-dark"
+                href="#"
+                onClick={() => ThemeToggle(theme)}
+              >
+                {' '}
+                {theme ? <Sun /> : <Moon />}
+              </a>
+            </span>
 
-      <span>
-       <Button type="primary" >Logout</Button>
-      </span>
-      </div>
-     
-   </Col>
-   </Row>
-   </div> 
-)
-}
+            <span>
+              <a className="text-dark" href="#">
+                <HelpCircle />
+              </a>
+            </span>
+
+            <span className="maximize">
+              <a className="text-dark" href="#" onClick={goFull}>
+                {' '}
+                {fullScreen ? <Minimize /> : <Maximize />}{' '}
+              </a>
+            </span>
+
+            <span>
+              <Button type="primary" onClick={() => logout()}>
+                Logout
+              </Button>
+            </span>
+          </div>
+        </Col>
+      </Row>
+    </div>
+  );
+};
 
 export default Header;

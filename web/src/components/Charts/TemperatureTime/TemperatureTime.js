@@ -46,7 +46,7 @@ function TemperatureTime() {
       style={{
         display: 'inline-block',
         width: '450px',
-        height: '300px',
+        height: '240px',
         padding: '0.5rem',
         borderStyle: 'none',
         margin: '1rem',

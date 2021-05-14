@@ -16,6 +16,10 @@
 //   }
 // }
 
+.map-container {
+  height: 500px;
+  }
+
 .mapboxgl-popup-content{
 .stops.info{
   width: 250px;
@@ -25,4 +29,40 @@
   }
 }
 }
+
+.e-marker {
+  transform-origin: bottom center;
+  cursor: pointer;
+  
+  &__marker {
+    fill: #fff;
+  }
+  
+  &__icon {
+    fill: #fff;
+  }
+  
+  &__image {
+    transform: scale(0);
+    transform-origin: 50% 50%;
+  }
+  
+  &__circle {
+    display: none;
+  }
+  
+  &__text {
+    font-size: 12px;
+    font-family: brandon-grotesque, sans-serif;
+    text-align: center;
+    opacity: 0;
+    color: #fff;
+    fill: #fff;
+    transform-origin: 50% 50%;
+    // Center SVG text
+    alignment-baseline: middle;
+    text-anchor: middle;
+  }  
+}
+
 

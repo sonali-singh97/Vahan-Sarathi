@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import Chart from 'react-apexcharts';
 
-function OverallPersonCount() {
-  const [chartLabels, SetchartLebels] = useState([1, 2, 3, 4, 5, 6, 7]);
-  const [totalCount, settotalcount] = useState([50, 44, 36, 50, 39, 26, 48]);
+function MaleFemaleAreaChart() {
+  const [chartLabels, SetchartLebels] = useState([
+    'Day 1',
+    'Day2',
+    'Day3',
+    'Day4',
+    'Day5',
+    'Day6',
+    'Day7',
+  ]);
   const [male, setmale] = useState([15, 11, 16, 15, 19, 2, 28]);
   const [female, setfemale] = useState([15, 24, 16, 25, 19, 9, 8]);
-  const [withmask, setwithmask] = useState([20, 5, 3, 10, 10, 8, 20]);
 
   const [options, setoptions] = useState({
     chart: {
-      id: 'basic-area',
+      id: 'basic-bar',
     },
+
     xaxis: {
       categories: chartLabels,
     },
@@ -21,31 +28,32 @@ function OverallPersonCount() {
     dataLabels: {
       enabled: false,
     },
+    title: {
+      text: 'Male & Female (Week)',
+      align: 'center',
+      style: {
+        color: 'grey',
+      },
+    },
   });
 
   const [data, setdata] = useState([
-      {
-        name: 'Total',
-        data: totalCount,
-      },
-      {
-        name: 'Male',
-        data: male,
-      },
-      {
-        name: 'Female',
-        data: female,
-      },
-      {
-        name: 'With Mask',
-        data: withmask,
-      },
-    ]);
+    {
+      name: 'Male',
+      data: male,
+    },
+    {
+      name: 'Female',
+      data: female,
+    },
+  ]);
 
   return (
     <div
       style={{
         display: 'inline-block',
+        width: '520px',
+        height: '300px',
         padding: '0.5rem',
         borderStyle: 'none',
         margin: '1rem',
@@ -58,12 +66,11 @@ function OverallPersonCount() {
         options={options}
         series={data}
         type="area"
-        width={500}
-        height={400}
+        width={480}
+        height={290}
       />
-      <div style={{backgroundColor : 'red'}}></div>
     </div>
   );
 }
 
-export default OverallPersonCount;
+export default MaleFemaleAreaChart;
