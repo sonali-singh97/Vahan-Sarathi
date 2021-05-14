@@ -1,34 +1,47 @@
 import React, { useState } from 'react';
 import Chart from 'react-apexcharts';
 
-function AgeGroups() {
+function HumidityBarChart() {
   const [chartLabels, SetchartLebels] = useState([
-    'Age 1 - 0-17',
-    'Age 1 - 18-30',
-    'Age 1 - 31-55',
-    'Age 1 - >56',
+    'Day 1',
+    'Day2',
+    'Day3',
+    'Day4',
+    'Day5',
+    'Day6',
+    'Day7',
   ]);
-  const [age1,setage1] = useState(21)
-  const [age2, setage2] = useState(11);
-  const [age3, setage3] = useState(30);
-  const [age4, setage4] = useState(6);
+  const [humidityvalues, sethumidityvalues] = useState([
+    32, 25, 8, 10, 39, 2, 10,
+  ]);
+
+
 
   const [options, setoptions] = useState({
     chart: {
-      id: 'basic-area',
+      id: 'basic-bar',
     },
-    labels: ['0-18', '18-30', '31-55', '>56'],
+    plotOptions: {
+      bar: {
+        dataLabels: {
+          position: 'top', // top, center, bottom
+        },
+      },
+    },
     xaxis: {
       categories: chartLabels,
     },
     stroke: {
       curve: 'smooth',
     },
+    fill: {
+      colors: '#aa00ff',
+    },
     dataLabels: {
       enabled: true,
     },
     title: {
-      text: 'Age Groups',
+      text: 'Humidity (Weekly Data)',
       align: 'center',
       style: {
         color: 'grey',
@@ -36,12 +49,17 @@ function AgeGroups() {
     },
   });
 
-  const [data, setdata] = useState([age1,age2,age3,age4]);
+  const [data, setdata] = useState([
+    { name: 'Humidity', data: humidityvalues },
+  ]);
+
 
   return (
     <div
       style={{
         display: 'inline-block',
+        width: '520px',
+        height: '300px',
         padding: '0.5rem',
         borderStyle: 'none',
         margin: '1rem',
@@ -53,12 +71,12 @@ function AgeGroups() {
       <Chart
         options={options}
         series={data}
-        type="donut"
-        width={350}
-        height={220}
+        type="bar"
+        width={480}
+        height={280}
       />
     </div>
   );
 }
 
-export default AgeGroups;
+export default HumidityBarChart;

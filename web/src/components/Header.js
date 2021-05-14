@@ -18,18 +18,18 @@ const Header = () => {
   const [fullScreen, setFullScreen] = useState(false);
   const { data, setData } = useContext(DataContext);
 
-  useEffect(() => {
-    var sse = new EventSource('http://localhost:8000/stream', {
-      withCredentials: true,
-    });
-    console.log(sse);
+  // useEffect(() => {
+  //   var sse = new EventSource('http://localhost:8000/stream', {
+  //     withCredentials: true,
+  //   });
+  //   console.log(sse);
 
-    sse.onmessage = function (event) {
-      console.log(decodeURIComponent(escape(event.data)));
-      setData(event.data);
-      console.log('app2');
-    };
-  }, []);
+  //   sse.onmessage = function (event) {
+  //     console.log(decodeURIComponent(escape(event.data)));
+  //     setData(event.data);
+  //     console.log('app2');
+  //   };
+  // }, []);
 
   /*** Theme toggle ******/
   const ThemeToggle = (light) => {

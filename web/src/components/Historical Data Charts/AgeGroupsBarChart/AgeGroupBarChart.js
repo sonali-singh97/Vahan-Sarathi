@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 import Chart from 'react-apexcharts';
 
-function AgeGroups() {
+function AgeGroupBarChart() {
   const [chartLabels, SetchartLebels] = useState([
-    'Age 1 - 0-17',
-    'Age 1 - 18-30',
-    'Age 1 - 31-55',
-    'Age 1 - >56',
+    'Day 1',
+    'Day2',
+    'Day3',
+    'Day4',
+    'Day5',
+    'Day6',
+    'Day7',
   ]);
-  const [age1,setage1] = useState(21)
-  const [age2, setage2] = useState(11);
-  const [age3, setage3] = useState(30);
-  const [age4, setage4] = useState(6);
+  const [age1, setage1] = useState([23, 21, 2, 17, 10, 13, 19]);
+  const [age2, setage2] = useState([13, 20, 20, 7, 10, 23, 9]);
+  const [age3, setage3] = useState([8, 10, 16, 7, 6, 14, 9]);
+  const [age4, setage4] = useState([7, 11, 12, 6, 3, 3, 29]);
 
   const [options, setoptions] = useState({
     chart: {
-      id: 'basic-area',
+      id: 'basic-bar',
     },
-    labels: ['0-18', '18-30', '31-55', '>56'],
     xaxis: {
       categories: chartLabels,
     },
@@ -25,10 +27,10 @@ function AgeGroups() {
       curve: 'smooth',
     },
     dataLabels: {
-      enabled: true,
+      enabled: false,
     },
     title: {
-      text: 'Age Groups',
+      text: 'Age Groups (Weekly Data)',
       align: 'center',
       style: {
         color: 'grey',
@@ -36,12 +38,18 @@ function AgeGroups() {
     },
   });
 
-  const [data, setdata] = useState([age1,age2,age3,age4]);
-
+  const [data, setdata] = useState([
+    { name: '0-17', data: age1 },
+    { name: '18-30', data: age2 },
+    { name: '31-55', data: age3 },
+    { name: '>56', data: age4 },
+  ]);
   return (
     <div
       style={{
         display: 'inline-block',
+        width: '720px',
+        height: '395px',
         padding: '0.5rem',
         borderStyle: 'none',
         margin: '1rem',
@@ -53,12 +61,12 @@ function AgeGroups() {
       <Chart
         options={options}
         series={data}
-        type="donut"
-        width={350}
-        height={220}
+        type="bar"
+        width={700}
+        height={380}
       />
     </div>
   );
 }
 
-export default AgeGroups;
+export default AgeGroupBarChart;

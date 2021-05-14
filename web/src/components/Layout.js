@@ -10,13 +10,18 @@ import MaskedUnmasked from './Charts/MaskedUnmasked/MaskedUnmasked';
 import AccelerationTime from './Charts/AccelerationTime/AccelerationTime';
 import Age from './Charts/Age/Age';
 import PressureTime from './Charts/PressureTime/PressureTime';
-import OverallPersonCount from './Charts/OverallPersonCount/OverallPersonCount';
 import CountData from './CountData/CountData';
 import total_icon from './../assets/icons/activity.svg';
 import maleicon from './../assets/icons/male.svg';
 import mask_icon from './../assets/icons/masked.svg';
 import female_icon from './../assets/icons/svg.svg';
 import AgeGroups from './Charts/AgeGroups/AgeGroups';
+import TemperatureBarChart from './Historical Data Charts/TemperatureBarChart/TemperatureBarChart';
+import PressureBarChart from './Historical Data Charts/PressureBarChart/PressureBarChart';
+import HumidityBarChart from './Historical Data Charts/HumidityBarChart/HumidityBarChart';
+import AgeGroupBarChart from './Historical Data Charts/AgeGroupsBarChart/AgeGroupBarChart';
+import MaleFemaleAreaChart from './Historical Data Charts/MaleFemaleAreaChart/MaleFemaleAreaChart';
+import MixedCharts from './../components/Historical Data Charts/MixedCharts/MixedCharts';
 
 // import Header from "./Header"
 
@@ -71,7 +76,7 @@ const Layout = () => {
           </div>
         </Col>
       </Row>
-      <Row style={{ height: '400px'}}>
+      <Row style={{ height: '400px' }}>
         <Col lg={9} style={{ height: '100%' }}>
           <div
             style={{
@@ -86,7 +91,7 @@ const Layout = () => {
             <PressureTime />
           </div>
         </Col>
-        <Col lg={3} style={{ height: '100%'}}>
+        <Col lg={3} style={{ height: '100%' }}>
           <div
             style={{
               display: 'flex',
@@ -99,6 +104,12 @@ const Layout = () => {
             <AgeGroups />
           </div>
         </Col>
+        <TemperatureBarChart />
+        <PressureBarChart />
+        <HumidityBarChart />
+        <AgeGroupBarChart />
+        <MaleFemaleAreaChart />
+        <MixedCharts />
       </Row>
     </div>
   );
