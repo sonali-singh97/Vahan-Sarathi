@@ -11,6 +11,7 @@ import {
   HelpCircle,
 } from 'react-feather';
 import DataContext from '../context/Data';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Header = () => {
   const [theme, setTheme] = useState(false);
@@ -68,6 +69,8 @@ const Header = () => {
     }
   };
 
+  const { logout } = useAuth0();
+
   return (
     <div className="header">
       <Row>
@@ -112,7 +115,9 @@ const Header = () => {
             </span>
 
             <span>
-              <Button type="primary">Logout</Button>
+              <Button type="primary" onClick={() => logout()}>
+                Logout
+              </Button>
             </span>
           </div>
         </Col>

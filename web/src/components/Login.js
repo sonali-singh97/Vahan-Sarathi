@@ -9,7 +9,8 @@ import {
   Moon,
   HelpCircle,
 } from 'react-feather';
-import GoogleButton from 'react-google-button';
+import { useAuth0 } from '@auth0/auth0-react';
+import buslogo from './../assets/icons/bus.svg';
 
 function Login() {
   const [theme, setTheme] = useState(false);
@@ -51,18 +52,16 @@ function Login() {
     }
   };
 
-  const SignInButtonHnadler = () => {
-    
-  };
+  const { loginWithRedirect } = useAuth0();
 
   return (
     <div>
       <div className="login_header">
         <Row>
-          <Col>
+          <Col lg={8}>
             <h4>Login</h4>
           </Col>
-          <Col>
+          <Col lg={4}>
             <div className="rightdiv">
               <span className="mode">
                 <a
@@ -95,6 +94,17 @@ function Login() {
             style={{ fontSize: '60px', fontWeight: '600' }}
           >
             <span className="welcome_text">Welcome to </span>Vahan Sarathi
+            <span>
+              <img
+                src={buslogo}
+                style={{
+                  marginLeft: '1rem',
+                  marginTop: '1rem',
+                  width: '30px',
+                  height: '30px',
+                }}
+              ></img>
+            </span>
           </h1>
           <h6 className="subtext">Please login to continue</h6>
         </Container>
@@ -116,7 +126,12 @@ function Login() {
                 'rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset',
             }}
           >
-            <GoogleButton onClick={SignInButtonHnadler} />
+            <Button
+              style={{ width: '150px' }}
+              onClick={() => loginWithRedirect()}
+            >
+              Login
+            </Button>
           </div>
         </div>
       </Row>
