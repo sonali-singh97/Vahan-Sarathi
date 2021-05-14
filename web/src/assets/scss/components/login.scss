@@ -15,13 +15,22 @@
   align-items: middle;
 }
 
-.welcome_text{
-    font-size: 18px;
-    color: #E91E63;
-    font-weight: 700;
+.welcome_text {
+  font-size: 18px;
+  color: #e91e63;
+  font-weight: 700;
 }
 
-.subtext{
-    margin-top: 2.5rem;
-    text-align: center;
+.subtext {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+@keyframes animate {
+  0% {
+    transform: translatex(0);
+  }
+  100% {
+    transform: translatex(1600px);
+  }
 }

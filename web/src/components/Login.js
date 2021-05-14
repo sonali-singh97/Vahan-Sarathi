@@ -8,6 +8,11 @@ import {
   Sun,
   Moon,
   HelpCircle,
+  Truck,
+  Map,
+  MapPin,
+  Navigation,
+  Navigation2,
 } from 'react-feather';
 import { useAuth0 } from '@auth0/auth0-react';
 import buslogo from './../assets/icons/bus.svg';
@@ -88,10 +93,24 @@ function Login() {
         </Row>
       </div>
       <Row style={{ marginTop: '12rem' }}>
-        <Container>
+        <Container
+          style={{
+            boxShadow:
+              'rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset',
+            width: '40%',
+            padding: '2rem',
+            height: '300px',
+            borderRadius: '22px',
+            backgroundColor: '#F7F9FA',
+          }}
+        >
           <h1
             class="text-center"
-            style={{ fontSize: '60px', fontWeight: '600' }}
+            style={{
+              fontSize: '60px',
+              fontWeight: '600',
+              color: '#002884',
+            }}
           >
             <span className="welcome_text">Welcome to </span>Vahan Sarathi
             <span>
@@ -107,34 +126,72 @@ function Login() {
             </span>
           </h1>
           <h6 className="subtext">Please login to continue</h6>
-        </Container>
-      </Row>
-      <Row>
-        <div
-          style={{
-            marginTop: '1.5rem',
-            width: '100%',
-            height: '200px',
-            textAlign: 'center',
-          }}
-        >
           <div
             style={{
-              marginTop: '1rem',
-              display: 'inline-block',
-              boxShadow:
-                'rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset',
+              marginTop: '1.5rem',
+              width: '100%',
+              height: '200px',
+              textAlign: 'center',
             }}
           >
-            <Button
-              style={{ width: '150px' }}
-              onClick={() => loginWithRedirect()}
+            <div
+              style={{
+                marginTop: '1rem',
+                display: 'inline-block',
+                boxShadow:
+                  'rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset',
+              }}
             >
-              Login
-            </Button>
+              <Button
+                style={{ width: '150px' }}
+                onClick={() => loginWithRedirect()}
+              >
+                Login
+              </Button>
+            </div>
           </div>
-        </div>
+        </Container>
       </Row>
+      <div
+        style={{
+          backgroundColor: '#eff8ff',
+          zIndex: '-1',
+          width: '100%',
+          height: '100vh',
+          position: 'absolute',
+          top: '0',
+          left: '0px',
+        }}
+      >
+        <Truck
+          style={{
+            position: 'absolute',
+            top: '35%',
+            left: '-10%',
+            animation: 'animate 10s linear infinite',
+            animationDelay: '0.5s',
+          }}
+        />
+        <Truck
+          style={{
+            position: 'absolute',
+            top: '52%',
+            left: '-10%',
+            animation: 'animate 10s linear infinite',
+            animationDelay: '4s',
+          }}
+        />
+        <Truck
+          style={{
+            position: 'absolute',
+            top: '72%',
+            left: '-10%',
+            animation: 'animate 10s linear infinite',
+            animationDelay: '7s',
+          }}
+        />
+        1
+      </div>
     </div>
   );
 }

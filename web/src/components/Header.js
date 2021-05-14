@@ -69,9 +69,10 @@ const Header = () => {
     }
   };
 
-  const { logout } = useAuth0();
+  const { logout  } = useAuth0();
 
   return (
+    
     <div className="header">
       <Row>
         <Col>
@@ -96,7 +97,6 @@ const Header = () => {
                 href="#"
                 onClick={() => ThemeToggle(theme)}
               >
-                {' '}
                 {theme ? <Sun /> : <Moon />}
               </a>
             </span>
