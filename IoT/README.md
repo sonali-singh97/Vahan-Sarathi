@@ -1,6 +1,20 @@
 # IoT/Edge Device Code
 
-## Developing & Executing the Code
+<img src="Images\RPI_prototype.png" alt="Raspberry Pi Node Prototype" width="200"/>
+
+## Contents of the IoT Edge Node
+
+1. Compute Units
+   1. Raspberry Pi 4
+   
+2. Sensors
+   1. PIR, Proximity and Ultrasonic Sensors (Detecting and Counting passengers Entering or Exiting the Vehicle)
+   2. Gyroscope and Accelerometer (Detecting Velocity of Vehicle in 3-D)
+   3. GPS and Barometer (Detecting Location and Altitude of the Vehicle)
+   4. DHT-11 (Detecting the vehicle's environmental Temperature and Humidity)
+   5. USB Camera (Detecting the age, gender and mask of passengers Entering or Exiting the Vehicle)
+
+## Developing & Executing the Simulation Code - Real-Time Data
 
 1. Clone this repo. 
     ``` bash
@@ -12,7 +26,7 @@
     cd Vahan-Sarathi/IoT
     ```
 
-3. Create a Virtual Environemnt.
+3. Create a Virtual Environment.
     ``` bash 
     python3 -m venv venv
     ```
@@ -55,4 +69,41 @@
          }
          
 9. In `main.py` replace `20.197.27.68:54672` with your pravega-grpc-getway IP address and port. 
+    
 10. Run `python main.py`. 
+
+11. Multiple Vehicles can be simulated by running the following commands
+
+    1. Navigate to `Multi_vehicle_simulation`
+        ```bash
+        cd ./Multi_vehicle_simulation
+        ```
+    2. Run different python files like `route1_bus1.py` or `route1_bus2.py` to simulate different buses running on different path.
+
+    1. Navigate back to `IoT`
+       ```bash
+       cd ../
+       ```
+
+
+## Developing & Executing the Simulation Code - Historic Data on Cassandra
+
+
+1. Navigate to `Data_Fabrication`
+   ```bash
+   cd ./Data_Fabrication
+   ```
+
+2. Create a `config.py` file with following contents. 
+    ``` python3 
+    config = {
+         'username': "username,
+         'password': 'pass123',
+         'contactPoint': 'demo-cassandra.com',
+         'connectionString': 
+         'port':'9071'
+         }
+
+3. Run `cassandra_datagen.py` to populate the Casandra database.
+    
+4. Make edits to `cassandra_datagen.py` based on data needs and amount
