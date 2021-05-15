@@ -4,11 +4,11 @@ import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 import './../../../assets/scss/components/charts.scss';
 
-function PressureBarChart() {
+function PressureBarChart(props) {
   const [chartLabels, SetchartLebels] = useState([]);
   const [pressurevalues, setpressurevalues] = useState([]);
 
-    const { isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
 
   const [options, setoptions] = useState({
     chart: {
@@ -67,29 +67,24 @@ id: "011_2021-05-08_18:30:05"
 */
 
   useEffect(() => {
-    axios
-      .get('http://pravega-test.centralindia.cloudapp.azure.com:10080/data')
-      .then((res) => {
-        const data = res.data.message;
-        var labels = [];
-        var values = [];
-        data.map((item) => {
-          labels.push(item.Date);
-          values.push(item.Pressure);
-        });
-        SetchartLebels(labels.sort());
-        setpressurevalues(values);
-        setoptions({
-          ...options,
-          xaxis: {
-            ...options.xaxis,
-            categories: labels,
-          },
-        });
-        setchartdata([{ ...chartdata, data: values }]);
-      });
-  }, []);
-
+    const data = props.data;
+    var labels = [];
+    var values = [];
+    data.map((item) => {
+      labels.push(item.Date);
+      values.push(item.Pressure);
+    });
+    SetchartLebels(labels.sort());
+    setpressurevalues(values);
+    setoptions({
+      ...options,
+      xaxis: {
+        ...options.xaxis,
+        categories: labels,
+      },
+    });
+    setchartdata([{ ...chartdata, data: values }]);
+  }, [props]);
 
   return (
     <div

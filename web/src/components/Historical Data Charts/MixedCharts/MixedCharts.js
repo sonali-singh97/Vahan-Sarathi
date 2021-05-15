@@ -4,7 +4,7 @@ import './../../../assets/scss/components/charts.scss';
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 
-function MixedCharts() {
+function MixedCharts(props) {
   const [chartLabels, SetchartLebels] = useState([]);
   const [total, settotal] = useState([]);
   const [withmask, setmask] = useState([]);
@@ -79,38 +79,34 @@ function MixedCharts() {
   ]);
 
   useEffect(() => {
-    axios
-      .get('http://pravega-test.centralindia.cloudapp.azure.com:10080/data')
-      .then((res) => {
-        const data = res.data.message;
-        var labels = [];
-        var total_ = [];
-        var withmask_ = [];
-        var withoutmask_ = [];
-        data.map((item) => {
-          labels.push(item.Date);
-          total_.push(item.MALE + item.FEMALE);
-          withmask_.push(item['MASK COUNT']);
-          withoutmask_.push(item['NO MASK']);
-        });
-        SetchartLebels(labels.sort());
-        setmask(withmask_);
-        setwithoutmask(withoutmask_);
-        settotal(total_);
-        setoptions({
-          ...options,
-          xaxis: {
-            ...options.xaxis,
-            categories: labels,
-          },
-        });
-        setchartdata([
-          { ...chartdata, data: total_ },
-          { ...chartdata, data: withmask_ },
-          { ...chartdata, data: withoutmask_ },
-        ]);
-      });
-  }, []);
+    const data = props.data;
+    var labels = [];
+    var total_ = [];
+    var withmask_ = [];
+    var withoutmask_ = [];
+    data.map((item) => {
+      labels.push(item.Date);
+      total_.push(item.MALE + item.FEMALE);
+      withmask_.push(item['MASK COUNT']);
+      withoutmask_.push(item['NO MASK']);
+    });
+    SetchartLebels(labels.sort());
+    setmask(withmask_);
+    setwithoutmask(withoutmask_);
+    settotal(total_);
+    setoptions({
+      ...options,
+      xaxis: {
+        ...options.xaxis,
+        categories: labels,
+      },
+    });
+    setchartdata([
+      { ...chartdata, data: total_ },
+      { ...chartdata, data: withmask_ },
+      { ...chartdata, data: withoutmask_ },
+    ]);
+  }, [props]);
 
   return (
     <div

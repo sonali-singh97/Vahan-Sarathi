@@ -4,7 +4,7 @@ import axios from 'axios';
 import './../../../assets/scss/components/charts.scss';
 import { useAuth0 } from '@auth0/auth0-react';
 
-function AgeGroupBarChart() {
+function AgeGroupBarChart(props) {
   const [chartLabels, SetchartLebels] = useState([]);
   const [age1, setage1] = useState([]);
   const [age2, setage2] = useState([]);
@@ -43,43 +43,39 @@ function AgeGroupBarChart() {
   ]);
 
   useEffect(() => {
-    axios
-      .get('http://pravega-test.centralindia.cloudapp.azure.com:10080/data')
-      .then((res) => {
-        const data = res.data.message;
-        console.log(data);
-        var labels = [];
-        var age_grp_1 = [];
-        var age_grp_2 = [];
-        var age_grp_3 = [];
-        var age_grp_4 = [];
-        data.map((item) => {
-          labels.push(item.Date);
-          age_grp_1.push(item['AGE GRP 1']);
-          age_grp_2.push(item['AGE GRP 2']);
-          age_grp_3.push(item['AGE GRP 3']);
-          age_grp_4.push(item['AGE GRP 4']);
-        });
-        SetchartLebels(labels.sort());
-        setage1(age_grp_1);
-        setage1(age_grp_2);
-        setage1(age_grp_3);
-        setage1(age_grp_4);
-        setoptions({
-          ...options,
-          xaxis: {
-            ...options.xaxis,
-            categories: labels,
-          },
-        });
-        setchartdata([
-          { ...chartdata, data: age_grp_1 },
-          { ...chartdata, data: age_grp_2 },
-          { ...chartdata, data: age_grp_3 },
-          { ...chartdata, data: age_grp_4 },
-        ]);
-      });
-  }, []);
+    const data = props.data;
+    console.log(data);
+    var labels = [];
+    var age_grp_1 = [];
+    var age_grp_2 = [];
+    var age_grp_3 = [];
+    var age_grp_4 = [];
+    data.map((item) => {
+      labels.push(item.Date);
+      age_grp_1.push(item['AGE GRP 1']);
+      age_grp_2.push(item['AGE GRP 2']);
+      age_grp_3.push(item['AGE GRP 3']);
+      age_grp_4.push(item['AGE GRP 4']);
+    });
+    SetchartLebels(labels.sort());
+    setage1(age_grp_1);
+    setage1(age_grp_2);
+    setage1(age_grp_3);
+    setage1(age_grp_4);
+    setoptions({
+      ...options,
+      xaxis: {
+        ...options.xaxis,
+        categories: labels,
+      },
+    });
+    setchartdata([
+      { ...chartdata, data: age_grp_1 },
+      { ...chartdata, data: age_grp_2 },
+      { ...chartdata, data: age_grp_3 },
+      { ...chartdata, data: age_grp_4 },
+    ]);
+  }, [props]);
 
   return (
     <div

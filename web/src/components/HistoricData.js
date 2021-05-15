@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Row,
   Col,
@@ -17,21 +17,47 @@ import PressureBarChart from './Historical Data Charts/PressureBarChart/Pressure
 import MixedChart from './Historical Data Charts/MixedCharts/MixedCharts';
 import BlurOverlay from './../components/BlurOverlay/BlurOverlay';
 import { useAuth0 } from '@auth0/auth0-react';
-import {Search} from 'react-feather'
+import { Search } from 'react-feather';
+import { Button } from 'react-bootstrap';
+import axios from 'axios';
 function HistoricData() {
   const { isAuthenticated } = useAuth0();
 
-  const [busidvalue, setbusidvalue] = useState(null);
-  const [routeid, setrouteid] = useState(null);
+  const [busidvalue, setbusidvalue] = useState(1);
+  const [routeid, setrouteid] = useState(1);
+
+  const [datasend, setdatasend] = useState(null);
 
   const handleSelectbusid = (e) => {
-    setbusidvalue(e);
+    setbusidvalue(parseInt(e));
   };
 
   const handleSelectrouteid = (e) => {
-    setrouteid(e);
+    setrouteid(parseInt(e));
   };
 
+  console.log('busidvalue : ' + busidvalue);
+  console.log('routeid : ' + routeid);
+
+  useEffect(() => {
+    fetch(`http://pravega-test.centralindia.cloudapp.azure.com:10080/data/1/1`)
+      .then((response) => response.json())
+      .then((json) => {
+        const data = json.message;
+        setdatasend(data);
+      });
+  }, []);
+
+  const getdata = () => {
+    fetch(
+      `http://pravega-test.centralindia.cloudapp.azure.com:10080/data/${routeid}/${busidvalue}`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        const data = json.message;
+        setdatasend(data);
+      });
+  };
   return (
     <div style={{ position: 'relative' }}>
       {isAuthenticated ? null : <BlurOverlay />}
@@ -47,66 +73,53 @@ function HistoricData() {
                 justifyContent: 'center',
               }}
             >
-              <div className="input-div">
-                <label>
-                  <Search />
-                </label>
-                <input
-                  type="text"
-                  placeholder="Select Bus ID..."
-                  value={busidvalue}
-                />
-              </div>
+              <h6>{`Bus id ${busidvalue}`}</h6>
               <DropdownButton
                 style={{ margin: '1rem' }}
                 id="dropdown-basic-button"
                 title="Select Bus ID"
                 onSelect={handleSelectbusid}
               >
-                <Dropdown.Item eventKey="Bus ID 1">Bus ID 1</Dropdown.Item>
-                <Dropdown.Item eventKey="Bus ID 2">Bus ID 2</Dropdown.Item>
-                <Dropdown.Item eventKey="Bus ID 3">Bus ID 3</Dropdown.Item>
+                <Dropdown.Item eventKey="1">1</Dropdown.Item>
+                <Dropdown.Item eventKey="2">2</Dropdown.Item>
               </DropdownButton>
-              <div className="input-div">
-                <label>
-                  <Search />
-                </label>
-                <input
-                  type="text"
-                  placeholder="Select Route ID..."
-                  value={routeid}
-                />
-              </div>
+              <h6>{`Route id ${routeid}`}</h6>
               <DropdownButton
                 style={{ margin: '1rem' }}
                 id="dropdown-basic-button"
                 title="Select Route"
                 onSelect={handleSelectrouteid}
               >
-                <Dropdown.Item eventKey="Route ID 1">Route ID 1</Dropdown.Item>
-                <Dropdown.Item eventKey="Route ID 2">Route ID 2</Dropdown.Item>
-                <Dropdown.Item eventKey="Route ID 3">Route ID 3</Dropdown.Item>
+                <Dropdown.Item eventKey="1">Route ID 1</Dropdown.Item>
+                <Dropdown.Item eventKey="2">Route ID 2</Dropdown.Item>
               </DropdownButton>
+              <Button style={{ marginLeft: '2rem' }} onClick={getdata}>
+                Go
+              </Button>
             </div>
-            <div className="flexBox1">
-              <TemperatureBarChart />
-              <PressureBarChart />
-              <HumidityBarChart />
-            </div>
-            <div className="flexBox1">
-              <AgeGroupBarChart />
-              <MaleFemaleAreaChatr />
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignContent: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <MixedChart />
-            </div>
+            {datasend ? (
+              <React.Fragment>
+                <div className="flexBox1">
+                  <TemperatureBarChart data={datasend} />
+                  <PressureBarChart data={datasend} />
+                  <HumidityBarChart data={datasend} />
+                </div>
+                <div className="flexBox1">
+                  <AgeGroupBarChart data={datasend} />
+                  <MaleFemaleAreaChatr data={datasend} />
+                </div>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignContent: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <MixedChart data={datasend} />
+                </div>
+              </React.Fragment>
+            ) : null}
           </Container>
         </div>
       </Container>

@@ -4,7 +4,7 @@ import axios from 'axios';
 import './../../../assets/scss/components/charts.scss';
 import { useAuth0 } from '@auth0/auth0-react';
 
-function HumidityBarChart() {
+function HumidityBarChart(props) {
   const [chartLabels, SetchartLebels] = useState([]);
   const [humidityvalues, sethumidityvalues] = useState([]);
 
@@ -47,28 +47,24 @@ function HumidityBarChart() {
   ]);
 
   useEffect(() => {
-    axios
-      .get('http://pravega-test.centralindia.cloudapp.azure.com:10080/data')
-      .then((res) => {
-        const data = res.data.message;
-        var labels = [];
-        var values = [];
-        data.map((item) => {
-          labels.push(item.Date);
-          values.push(item.Humidity);
-        });
-        SetchartLebels(labels.sort());
-        sethumidityvalues(values);
-        setoptions({
-          ...options,
-          xaxis: {
-            ...options.xaxis,
-            categories: labels,
-          },
-        });
-        setchartdata([{ ...chartdata, data: values }]);
-      });
-  }, []);
+    const data = props.data;
+    var labels = [];
+    var values = [];
+    data.map((item) => {
+      labels.push(item.Date);
+      values.push(item.Humidity);
+    });
+    SetchartLebels(labels.sort());
+    sethumidityvalues(values);
+    setoptions({
+      ...options,
+      xaxis: {
+        ...options.xaxis,
+        categories: labels,
+      },
+    });
+    setchartdata([{ ...chartdata, data: values }]);
+  }, [props]);
 
   return (
     <div
