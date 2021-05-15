@@ -1,6 +1,6 @@
 # IoT/Edge Device Code
 
-<img src="/Images/RPI_prototype.png" alt="Raspberry Pi Node Prototype" width="1000"/>
+<img src="Images/RPI_prototype.png" alt="Raspberry Pi Node Prototype" width="1000"/>
 
 ## Contents of the IoT Edge Node
 
