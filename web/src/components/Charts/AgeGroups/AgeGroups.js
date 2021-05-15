@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts';
 
 function AgeGroups() {
@@ -12,6 +12,8 @@ function AgeGroups() {
   const [age2, setage2] = useState(11);
   const [age3, setage3] = useState(30);
   const [age4, setage4] = useState(6);
+
+  // let { res, setRes } = useContext(DataContext);
 
   const [options, setoptions] = useState({
     chart: {
@@ -38,10 +40,31 @@ function AgeGroups() {
 
   const [data, setdata] = useState([age1, age2, age3, age4]);
 
+  // useEffect(() => {
+  //   if (res !== undefined) {
+  //     res = JSON.parse(res);
+  //     var oldlabels = chartLabels;
+  //     var age1_old = res.age1;
+  //     var age2_old = res.age2;
+  //     var age3_old = res.age3;
+  //     var age4_old = res.age4;
+
+  //     setage1(age1_old);
+  //     setage2(age2_old);
+  //     setage3(age3_old);
+  //     setage4(age4_old);
+  //     SetchartLebels(oldlabels);
+
+  //     const tempdata = [age1_old, age2_old, age3_old, age4_old];
+
+  //     setdata(tempdata);
+  //   }
+  // }, [res]);
+
   return (
     <div
       style={{
-        zIndex :-1,
+        zIndex: -1,
         display: 'inline-block',
         padding: '0.5rem',
         borderStyle: 'none',
