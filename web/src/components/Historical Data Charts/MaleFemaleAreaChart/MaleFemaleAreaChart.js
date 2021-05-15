@@ -58,7 +58,7 @@ function MaleFemaleAreaChart() {
           male_.push(item.MALE);
           female_.push(item.FEMALE);
         });
-        SetchartLebels(labels);
+        SetchartLebels(labels.sort());
         setmale(male_);
         setfemale(female_);
         setoptions({

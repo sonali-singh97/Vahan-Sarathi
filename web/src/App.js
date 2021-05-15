@@ -13,18 +13,13 @@ import DataContext from './context/Data';
 import HistoricData from './components/HistoricData';
 import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
 
-
 const ThemeContext = React.createContext('light');
-
-
 
 function App() {
   const [data, setData] = useState(null);
 
   const { isAuthenticated ,isLoading } = useAuth0();
   
-
-
   return (
     <DataContext.Provider value={{ data, setData }}>
       {isLoading ? (

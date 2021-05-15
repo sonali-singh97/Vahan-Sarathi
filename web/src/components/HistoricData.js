@@ -17,6 +17,7 @@ import PressureBarChart from './Historical Data Charts/PressureBarChart/Pressure
 import MixedChart from './Historical Data Charts/MixedCharts/MixedCharts';
 import BlurOverlay from './../components/BlurOverlay/BlurOverlay';
 import { useAuth0 } from '@auth0/auth0-react';
+import {Search} from 'react-feather'
 function HistoricData() {
   const { isAuthenticated } = useAuth0();
 
@@ -38,41 +39,55 @@ function HistoricData() {
         <Header loginsource="historical_data" logoutsource="historical_data" />
         <div style={{ marginTop: '6rem' }}>
           <Container className="sub" style={{ width: '100%', height: '100%' }}>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <DropdownButton
-                  style={{ margin: '1rem' }}
-                  id="dropdown-basic-button"
-                  title="Select Bus ID"
-                  onSelect={handleSelectbusid}
-                >
-                  <Dropdown.Item eventKey="Bus ID 1">Bus ID 1</Dropdown.Item>
-                  <Dropdown.Item eventKey="Bus ID 2">Bus ID 2</Dropdown.Item>
-                  <Dropdown.Item eventKey="Bus ID 3">Bus ID 3</Dropdown.Item>
-                </DropdownButton>
-                <DropdownButton
-                  style={{ margin: '1rem' }}
-                  id="dropdown-basic-button"
-                  title="Select Route"
-                  onSelect={handleSelectrouteid}
-                >
-                  <Dropdown.Item eventKey="Route ID 1">
-                    Route ID 1
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="Route ID 2">
-                    Route ID 2
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="Route ID 3">
-                    Route ID 3
-                  </Dropdown.Item>
-                </DropdownButton>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <div className="input-div">
+                <label>
+                  <Search />
+                </label>
+                <input
+                  type="text"
+                  placeholder="Select Bus ID..."
+                  value={busidvalue}
+                />
               </div>
+              <DropdownButton
+                style={{ margin: '1rem' }}
+                id="dropdown-basic-button"
+                title="Select Bus ID"
+                onSelect={handleSelectbusid}
+              >
+                <Dropdown.Item eventKey="Bus ID 1">Bus ID 1</Dropdown.Item>
+                <Dropdown.Item eventKey="Bus ID 2">Bus ID 2</Dropdown.Item>
+                <Dropdown.Item eventKey="Bus ID 3">Bus ID 3</Dropdown.Item>
+              </DropdownButton>
+              <div className="input-div">
+                <label>
+                  <Search />
+                </label>
+                <input
+                  type="text"
+                  placeholder="Select Route ID..."
+                  value={routeid}
+                />
+              </div>
+              <DropdownButton
+                style={{ margin: '1rem' }}
+                id="dropdown-basic-button"
+                title="Select Route"
+                onSelect={handleSelectrouteid}
+              >
+                <Dropdown.Item eventKey="Route ID 1">Route ID 1</Dropdown.Item>
+                <Dropdown.Item eventKey="Route ID 2">Route ID 2</Dropdown.Item>
+                <Dropdown.Item eventKey="Route ID 3">Route ID 3</Dropdown.Item>
+              </DropdownButton>
+            </div>
             <div className="flexBox1">
               <TemperatureBarChart />
               <PressureBarChart />

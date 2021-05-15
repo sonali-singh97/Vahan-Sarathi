@@ -77,7 +77,7 @@ id: "011_2021-05-08_18:30:05"
           labels.push(item.Date);
           values.push(item.Pressure);
         });
-        SetchartLebels(labels);
+        SetchartLebels(labels.sort());
         setpressurevalues(values);
         setoptions({
           ...options,

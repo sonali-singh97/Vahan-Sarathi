@@ -93,7 +93,7 @@ function MixedCharts() {
           withmask_.push(item['MASK COUNT']);
           withoutmask_.push(item['NO MASK']);
         });
-        SetchartLebels(labels);
+        SetchartLebels(labels.sort());
         setmask(withmask_);
         setwithoutmask(withoutmask_);
         settotal(total_);

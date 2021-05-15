@@ -60,7 +60,7 @@ function AgeGroupBarChart() {
           age_grp_3.push(item['AGE GRP 3']);
           age_grp_4.push(item['AGE GRP 4']);
         });
-        SetchartLebels(labels);
+        SetchartLebels(labels.sort());
         setage1(age_grp_1);
         setage1(age_grp_2);
         setage1(age_grp_3);

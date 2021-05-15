@@ -8,7 +8,7 @@ function TemperatureBarChart() {
   const [chartLabels, SetchartLebels] = useState([]);
   const [tempvalues, settemperatiurevalues] = useState([]);
 
-    const { isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
 
   const [options, setoptions] = useState({
     chart: {
@@ -54,7 +54,7 @@ function TemperatureBarChart() {
           labels.push(item.Date);
           values.push(item.Temperature);
         });
-        SetchartLebels(labels);
+        SetchartLebels(labels.sort());
         settemperatiurevalues(values);
         setoptions({
           ...options,
