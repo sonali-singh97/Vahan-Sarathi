@@ -1,18 +1,18 @@
 # IoT/Edge Device Code
 
-<img src="Images\RPI_prototype.png" alt="Raspberry Pi Node Prototype" width="200"/>
+<img src="/Images/RPI_prototype.png" alt="Raspberry Pi Node Prototype" width="1000"/>
 
 ## Contents of the IoT Edge Node
 
 1. Compute Units
-   1. Raspberry Pi 4
+   * Raspberry Pi 4
    
 2. Sensors
-   1. PIR, Proximity and Ultrasonic Sensors (Detecting and Counting passengers Entering or Exiting the Vehicle)
-   2. Gyroscope and Accelerometer (Detecting Velocity of Vehicle in 3-D)
-   3. GPS and Barometer (Detecting Location and Altitude of the Vehicle)
-   4. DHT-11 (Detecting the vehicle's environmental Temperature and Humidity)
-   5. USB Camera (Detecting the age, gender and mask of passengers Entering or Exiting the Vehicle)
+   * PIR, Proximity and Ultrasonic Sensors (Detecting and Counting passengers Entering or Exiting the Vehicle)
+   * Gyroscope and Accelerometer (Detecting Velocity of Vehicle in 3-D)
+   * GPS and Barometer (Detecting Location and Altitude of the Vehicle)
+   * DHT-11 (Detecting the vehicle's environmental Temperature and Humidity)
+   * USB Camera (Detecting the age, gender and mask of passengers Entering or Exiting the Vehicle)
 
 ## Developing & Executing the Simulation Code - Real-Time Data
 
