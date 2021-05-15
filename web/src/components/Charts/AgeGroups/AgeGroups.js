@@ -8,7 +8,7 @@ function AgeGroups() {
     'Age 1 - 31-55',
     'Age 1 - >56',
   ]);
-  const [age1,setage1] = useState(21)
+  const [age1, setage1] = useState(21);
   const [age2, setage2] = useState(11);
   const [age3, setage3] = useState(30);
   const [age4, setage4] = useState(6);
@@ -25,7 +25,7 @@ function AgeGroups() {
       curve: 'smooth',
     },
     dataLabels: {
-      enabled: true,
+      enabled: false,
     },
     title: {
       text: 'Age Groups',
@@ -36,11 +36,12 @@ function AgeGroups() {
     },
   });
 
-  const [data, setdata] = useState([age1,age2,age3,age4]);
+  const [data, setdata] = useState([age1, age2, age3, age4]);
 
   return (
     <div
       style={{
+        zIndex :-1,
         display: 'inline-block',
         padding: '0.5rem',
         borderStyle: 'none',
@@ -50,13 +51,7 @@ function AgeGroups() {
           'rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset',
       }}
     >
-      <Chart
-        options={options}
-        series={data}
-        type="donut"
-        width={350}
-        height={220}
-      />
+      <Chart options={options} series={data} type="donut" />
     </div>
   );
 }

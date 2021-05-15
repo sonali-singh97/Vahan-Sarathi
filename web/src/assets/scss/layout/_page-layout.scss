@@ -36,8 +36,20 @@
   font-size: 18px;
 }
 
+.main_div{
+  position: relative;
+}
+
+@media only screen and (max-width: 1300px) {
+  .flex_box{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 @media only screen and (max-width: 655px) {
   .rightbar {
     margin-top: 0.5em;
   }
 }
+

@@ -43,8 +43,7 @@ function PressureTime() {
     <div
       style={{
         display: 'inline-block',
-        width: '450px',
-        height: '240px',
+        width: '33%',
         padding: '0.5rem',
         borderStyle: 'none',
         margin: '1rem',
@@ -55,8 +54,6 @@ function PressureTime() {
     >
       <Line
         data={data}
-        width={50}
-        height={30}
         options={{
           maintainAspectRatio: true,
           scales: {

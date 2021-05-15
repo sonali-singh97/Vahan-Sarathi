@@ -16,18 +16,17 @@ import maleicon from './../assets/icons/male.svg';
 import mask_icon from './../assets/icons/masked.svg';
 import female_icon from './../assets/icons/svg.svg';
 import AgeGroups from './Charts/AgeGroups/AgeGroups';
-import TemperatureBarChart from './Historical Data Charts/TemperatureBarChart/TemperatureBarChart';
-import PressureBarChart from './Historical Data Charts/PressureBarChart/PressureBarChart';
-import HumidityBarChart from './Historical Data Charts/HumidityBarChart/HumidityBarChart';
-import AgeGroupBarChart from './Historical Data Charts/AgeGroupsBarChart/AgeGroupBarChart';
-import MaleFemaleAreaChart from './Historical Data Charts/MaleFemaleAreaChart/MaleFemaleAreaChart';
-import MixedCharts from './../components/Historical Data Charts/MixedCharts/MixedCharts';
+
+import { useAuth0 } from '@auth0/auth0-react';
+import BlurOverlay from './BlurOverlay/BlurOverlay';
 
 // import Header from "./Header"
 
 const Layout = () => {
   const [mapCenter, setMapCenter] = useState({ lat: 28.43603, lng: 77.01018 });
   const [mapZoom, setMapZoom] = useState(20);
+
+  const { isAuthenticated, isLoading } = useAuth0();
 
   return (
     <div className="page-body">
@@ -43,74 +42,81 @@ const Layout = () => {
           <CurrentInfo />
         </Col>
       </Row>
-      <Row style={{ height: '500px' }}>
-        <Col style={{ height: '100%' }} lg={5}>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'coloumn',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <div>
-              <CountData logo={total_icon} name="Total" percentage={25} count />
-              <CountData logo={maleicon} name="Male" percentage={75} />
+      <div className="main_div">
+        {!isAuthenticated ? <BlurOverlay /> :null}
+        <Row style={{ height: '500px' }}>
+          <div style={{ height: '500px', width: '40%' }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'coloumn',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '500px',
+                textAlign: 'left',
+              }}
+            >
+              <div>
+                <CountData
+                  logo={total_icon}
+                  name="Total"
+                  percentage={25}
+                  count
+                />
+                <CountData logo={maleicon} name="Male" percentage={75} />
+              </div>
+              <div>
+                <CountData logo={female_icon} name="Female" percentage={30} />
+                <CountData logo={mask_icon} name="With Mask" percentage={25} />
+              </div>
             </div>
-            <div>
-              <CountData logo={female_icon} name="Female" percentage={30} />
-              <CountData logo={mask_icon} name="With Mask" percentage={25} />
+          </div>
+          <div style={{ height: '500px', width: '55%' }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'coloumn',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '500px',
+              }}
+            >
+              <VelocityTime />
             </div>
           </div>
-        </Col>
-        <Col style={{ height: '100%' }} lg={7}>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <VelocityTime />
+        </Row>
+        <Row style={{ height: '300px' }}>
+          <div style={{ height: '100%', width: '75%' }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100%',
+              }}
+            >
+              <TemperatureTime />
+              <HumidityTime />
+              <PressureTime />
+            </div>
           </div>
-        </Col>
-      </Row>
-      <Row style={{ height: '400px' }}>
-        <Col lg={9} style={{ height: '100%' }}>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <TemperatureTime />
-            <HumidityTime />
-            <PressureTime />
+          <div style={{ height: '100%', width: '25%' }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100%',
+              }}
+            >
+              {/* <Age /> */}
+              <AgeGroups />
+            </div>
           </div>
-        </Col>
-        <Col lg={3} style={{ height: '100%' }}>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            {/* <Age /> */}
-            <AgeGroups />
-          </div>
-        </Col>
-        <TemperatureBarChart />
-        <PressureBarChart />
-        <HumidityBarChart />
-        <AgeGroupBarChart />
-        <MaleFemaleAreaChart />
-        <MixedCharts />
-      </Row>
+        </Row>
+      </div>
     </div>
   );
 };

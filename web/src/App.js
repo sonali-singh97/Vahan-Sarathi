@@ -10,6 +10,9 @@ import Login from './components/Login';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import DataContext from './context/Data';
+import HistoricData from './components/HistoricData';
+import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
+
 
 const ThemeContext = React.createContext('light');
 
@@ -25,21 +28,28 @@ function App() {
   return (
     <DataContext.Provider value={{ data, setData }}>
       {isLoading ? (
-        <Spinner animation="border" role="status" style={{position : 'absolute' , left : '50%' , top:'50%'}}>
+        <Spinner
+          animation="border"
+          role="status"
+          style={{ position: 'absolute', left: '50%', top: '50%' }}
+        >
           <span className="sr-only"></span>
         </Spinner>
       ) : (
         <React.Fragment>
-          {isAuthenticated ? (
-            <Container fluid>
-              <Header />
-              <div className="wrapper">
-                <Layout />
-              </div>
-            </Container>
-          ) : (
-            <Login />
-          )}
+          <Switch>
+            <Route exact path="/historic_data">
+              <HistoricData />
+            </Route>
+            <Route exact path="/">
+              <Container fluid>
+                <Header logoutsource="dashboard" loginsource="dashboard" />
+                <div className="wrapper">
+                  <Layout />
+                </div>
+              </Container>
+            </Route>
+          </Switch>
         </React.Fragment>
       )}
     </DataContext.Provider>

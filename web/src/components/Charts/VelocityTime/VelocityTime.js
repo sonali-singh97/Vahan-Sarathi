@@ -42,12 +42,9 @@ function VelocityTime() {
   return (
     <div
       style={{
-        display: 'inline-block',
-        width: '680px',
-        height: '400px',
+        width: '100%',
         padding: '0.5rem',
         borderStyle: 'none',
-        margin: '2rem',
         borderRadius: '12px',
         boxShadow:
           'rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset',
@@ -55,8 +52,6 @@ function VelocityTime() {
     >
       <Line
         data={data}
-        width={50}
-        height={30}
         options={{
           maintainAspectRatio: true,
           scales: {

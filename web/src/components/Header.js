@@ -13,10 +13,10 @@ import {
 import DataContext from '../context/Data';
 import { useAuth0 } from '@auth0/auth0-react';
 
-const Header = () => {
+const Header = (props) => {
   const [theme, setTheme] = useState(false);
   const [fullScreen, setFullScreen] = useState(false);
-  const { data, setData } = useContext(DataContext);
+  // const { data, setData } = useContext(DataContext);
 
   // useEffect(() => {
   //   var sse = new EventSource('http://localhost:8000/stream', {
@@ -69,10 +69,9 @@ const Header = () => {
     }
   };
 
-  const { logout  } = useAuth0();
+  const { logout, isAuthenticated, loginWithRedirect } = useAuth0();
 
   return (
-    
     <div className="header">
       <Row>
         <Col>
@@ -82,7 +81,6 @@ const Header = () => {
         <Col>
           <div className="input-div">
             <label>
-              {' '}
               <Search />
             </label>
             <input type="text" placeholder="Search Buses..." />
@@ -109,15 +107,40 @@ const Header = () => {
 
             <span className="maximize">
               <a className="text-dark" href="#" onClick={goFull}>
-                {' '}
                 {fullScreen ? <Minimize /> : <Maximize />}{' '}
               </a>
             </span>
 
             <span>
-              <Button type="primary" onClick={() => logout()}>
-                Logout
-              </Button>
+              {isAuthenticated ? (
+                <Button
+                  type="primary"
+                  onClick={() => {
+                    props.logoutsource == 'dashboard'
+                      ? logout({ returnTo: 'http://localhost:3000/' })
+                      : logout({
+                          returnTo: 'http://localhost:3000/historic_data',
+                        });
+                  }}
+                >
+                  Logout
+                </Button>
+              ) : (
+                <Button
+                  type="primary"
+                  onClick={() =>{props.loginsource == 'dashboard'
+                    ? loginWithRedirect({
+                        redirectUri: 'http://localhost:3000/',
+                      })
+                    : loginWithRedirect({
+                        redirectUri: 'http://localhost:3000/historic_data',
+                      });}
+                    
+                  }
+                >
+                  Login
+                </Button>
+              )}
             </span>
           </div>
         </Col>

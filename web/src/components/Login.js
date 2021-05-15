@@ -162,35 +162,7 @@ function Login() {
           top: '0',
           left: '0px',
         }}
-      >
-        <Truck
-          style={{
-            position: 'absolute',
-            top: '35%',
-            left: '-10%',
-            animation: 'animate 10s linear infinite',
-            animationDelay: '0.5s',
-          }}
-        />
-        <Truck
-          style={{
-            position: 'absolute',
-            top: '52%',
-            left: '-10%',
-            animation: 'animate 10s linear infinite',
-            animationDelay: '4s',
-          }}
-        />
-        <Truck
-          style={{
-            position: 'absolute',
-            top: '72%',
-            left: '-10%',
-            animation: 'animate 10s linear infinite',
-            animationDelay: '7s',
-          }}
-        />
-        1
+      > 
       </div>
     </div>
   );
