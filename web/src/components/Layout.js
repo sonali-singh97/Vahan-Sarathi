@@ -27,7 +27,7 @@ import BlurOverlay from './BlurOverlay/BlurOverlay';
 
 const Layout = () => {
   // const [mapCenter, setMapCenter] = useState({ lat: 28.43603, lng: 77.01018 });
-  const [mapZoom, setMapZoom] = useState(30);
+  const [mapZoom, setMapZoom] = useState(100);
   const {streamObj, setStreamObj} = useContext(StreamContext)
   const { isAuthenticated, isLoading } = useAuth0();
   const [count, setCount] = useState(50);

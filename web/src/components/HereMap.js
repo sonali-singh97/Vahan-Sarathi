@@ -42,7 +42,7 @@ const Maps = (props) => {
     <div className="map">
       <MapContainer
         center={pos}
-        zoom={props.zoom}
+        zoom={14}
         scrollWheelZoom={false}
         whenCreated={map => setMap( map )}
       >
