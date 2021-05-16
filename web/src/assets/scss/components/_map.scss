@@ -25,7 +25,12 @@
     height: 100%;
   }
 
-  .marker{
+  .leaflet-popup-content {
+   min-width: 220px;
+ 
+}
+
+.marker{
   img{
     max-width:100%
   }
