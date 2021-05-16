@@ -63,7 +63,7 @@ const Layout = () => {
       <div className="main_div">
         <Row style={{ height: '400px' }}>
           <div style={{ height: '400px', width: '40%' }}>
-            <div
+            <Row
               style={{
                 display: 'flex',
                 flexDirection: 'coloumn',
@@ -73,35 +73,44 @@ const Layout = () => {
                 textAlign: 'left',
               }}
             >
-              <div>
+              <Col md={6}>
                 <CountData
                   logo={total_icon}
                   name="Total"
                   percentage={count}
                   count
                 />
+                 </Col>
+                 <Col md={6}>
                 <CountData
                   logo={maleicon}
                   name="Male"
                   percentage={male}
                   count
                 />
-              </div>
-              <div>
+                </Col>
+             
+             <Col md={6}>
+              
                 <CountData
                   logo={female_icon}
                   name="Female"
                   percentage={female}
                   count
                 />
+                </Col>
+
+                <Col md={6}>
+
                 <CountData
                   logo={mask_icon}
                   name="With Mask"
                   percentage={maskCount}
                   count
                 />
-              </div>
-            </div>
+                </Col>
+              
+            </Row>
           </div>
           <div style={{ height: '400px', width: '55%' }}>
             <div
