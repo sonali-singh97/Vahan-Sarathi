@@ -15,12 +15,12 @@ import StreamContext from './context/Stream';
 
 function App() {
   let [ res , setRes] = useState([[35.77, 67.89]]);
-  let [streamObj, setStreamObj] = useState({})
+  let [streamObj, setStreamObj] = useState()
 
   const [theme, setTheme] = useState(false)
   const { isAuthenticated } = useAuth0();
   return (
-   <StreamContext.Provider value={streamObj, setStreamObj} >
+   <StreamContext.Provider value={{streamObj, setStreamObj}} >
     <ThemeContext.Provider value={{theme, setTheme}}>
     <DataContext.Provider value={{res, setRes}}>
      <div className="page sidebar-open">

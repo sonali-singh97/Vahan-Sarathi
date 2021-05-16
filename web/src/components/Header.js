@@ -3,6 +3,7 @@ import { Row, Col, Button } from "react-bootstrap";
 import { LogIn, User, Minimize, Maximize, Search, Sun , Moon, HelpCircle  } from 'react-feather';
 import DataContext from "../context/Data";
 import ThemeContext from "../context/darkTheme";
+import StreamContext from "../context/Stream";
 import utf8 from "utf8";
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -11,7 +12,7 @@ const Header = () => {
   const [theme, setTheme] = useState(false);
   const [fullScreen, setFullScreen] = useState(false);
  let { res, setRes } = useContext(DataContext);
-
+  let {streamObj, setStreamObj} = useContext(StreamContext);
 
 
 
@@ -46,6 +47,8 @@ const fetchData =  (e) => {
   sse.onmessage =  function(event) {
  // console.log(event.data)
  const newPoint = JSON.parse(JSON.parse(event.data))
+
+   setStreamObj(JSON.parse(event.data))
    setRes([...res, [newPoint.lon, newPoint.lat]])
   
  

@@ -5,7 +5,7 @@ import { Row, Col, Card, Container } from 'react-bootstrap';
 import Maps from './HereMap';
 
 import CurrentInfo from './CurrentInfo';
-//import VelocityTime from './Charts/VelocityTime/VelocityTime';
+import VelocityTime from './Charts/VelocityTime/VelocityTime';
 import HumidityTime from './Charts/HumidityTime/HumidityTime';
 import TemperatureTime from './Charts/TemperatureTime/TemperatureTime';
 import MaleFemaleRatio from './Charts/MaleFemaleRatio/MaleFemaleRatio';
@@ -30,7 +30,7 @@ import MixedCharts from './../components/Historical Data Charts/MixedCharts/Mixe
 
 const Layout = () => {
   // const [mapCenter, setMapCenter] = useState({ lat: 28.43603, lng: 77.01018 });
-  const [mapZoom, setMapZoom] = useState(25);
+  const [mapZoom, setMapZoom] = useState(30);
 
   return (
     <div className="page-body">
@@ -66,7 +66,7 @@ const Layout = () => {
             </div>
           </div>
         </Col>
-        {/* <Col style={{ height: '100%' }} lg={7}>
+        <Col style={{ height: '100%' }} lg={7}>
           <div
             style={{
               display: 'flex',
@@ -77,7 +77,7 @@ const Layout = () => {
           >
             <VelocityTime />
           </div>
-        </Col> */}
+        </Col>
       </Row>
       <Row style={{ height: '400px' }}>
         <Col lg={9} style={{ height: '100%' }}>

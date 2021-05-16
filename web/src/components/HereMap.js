@@ -15,8 +15,10 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 
 const Maps = (props) => {
- const [pos, setPos] = useState([28.43603,  77.01018 ])
- const [center, setCenter] = useState([28.43603,  77.01018 ])
+
+  const [map, setMap] = useState(null)
+ const [pos, setPos] = useState([ 29.9789633 , 76.8923034  ])
+ const [center, setCenter] = useState(pos)
  let {
     res,
     setRes
@@ -24,18 +26,25 @@ const Maps = (props) => {
 
  useEffect(()=>{
      if(res.length >=2){
-  console.log(res[1])
-  setPos([res[1][1], res[1][0]])
-  setCenter([res[1][1], res[1][0]])
+  
+      if (map) map.flyTo(pos);
+
+
+    setPos([res[1][1], res[1][0]])
+ // setCenter(pos)
+
+
+  console.log(center)
      }
  },[res])
 
   return (
     <div className="map">
       <MapContainer
-        center={center}
+        center={pos}
         zoom={props.zoom}
         scrollWheelZoom={false}
+        whenCreated={map => setMap( map )}
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Line, defaults } from 'react-chartjs-2';
-import DataContext from "../../../context/Data"
+import StreamContext from "../../../context/Stream"
 
 defaults.animation = false;
 defaults.scale.grid.display = true;
@@ -11,7 +11,7 @@ defaults.font.size = 11;
 function VelocityTime() {
   const [chartLabels, SetchartLebels] = useState([]);
   const [velocityValues, setvelocityValues] = useState([]);
-  let {res, setRes} = useContext(DataContext);
+  let { streamObj, setStreamObj} = useContext(StreamContext);
 
   const [data, setdata] = useState({
     labels: chartLabels,
@@ -43,8 +43,8 @@ function VelocityTime() {
 
   useEffect(() => {
 
-    if(res!== undefined){
-    res = JSON.parse(res)
+    if(streamObj!== undefined){
+    streamObj = JSON.parse(streamObj)
    var oldvalvalues = velocityValues;
    var oldlabels = chartLabels;
    if(oldvalvalues.length >10 && oldlabels.length >10 ){
@@ -53,7 +53,7 @@ function VelocityTime() {
      oldlabels.shift();
      oldlabels.shift();
    }
-   oldvalvalues.push(res.velocity)
+   oldvalvalues.push(streamObj.velocity)
    oldlabels.push(Date.now())
    setvelocityValues(oldvalvalues)
    SetchartLebels(oldlabels)
@@ -87,9 +87,9 @@ function VelocityTime() {
   }
 
     setdata(tempdata)
-     console.log(res.velocity)
+     console.log(streamObj.velocity)
     }
-  }, [res])
+  }, [streamObj])
 
   return (
     <div
