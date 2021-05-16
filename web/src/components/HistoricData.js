@@ -60,7 +60,7 @@ function HistoricData() {
   };
   return (
     <div style={{ position: 'relative' }}>
-      {isAuthenticated ? null : <BlurOverlay />}
+      {/* {isAuthenticated ? null : <BlurOverlay />} */}
       <Container fluid>
         <Header loginsource="historical_data" logoutsource="historical_data" />
         <div style={{ marginTop: '6rem' }}>

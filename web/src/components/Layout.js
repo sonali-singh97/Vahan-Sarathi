@@ -43,7 +43,7 @@ const Layout = () => {
         </Col>
       </Row>
       <div className="main_div">
-        {!isAuthenticated ? <BlurOverlay /> :null}
+        {/* {!isAuthenticated ? <BlurOverlay /> :null} */}
         <Row style={{ height: '500px' }}>
           <div style={{ height: '500px', width: '40%' }}>
             <div

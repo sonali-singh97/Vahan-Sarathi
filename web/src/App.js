@@ -22,15 +22,6 @@ function App() {
   
   return (
     <DataContext.Provider value={{ data, setData }}>
-      {isLoading ? (
-        <Spinner
-          animation="border"
-          role="status"
-          style={{ position: 'absolute', left: '50%', top: '50%' }}
-        >
-          <span className="sr-only"></span>
-        </Spinner>
-      ) : (
         <React.Fragment>
           <Switch>
             <Route exact path="/historic_data">
@@ -46,7 +37,6 @@ function App() {
             </Route>
           </Switch>
         </React.Fragment>
-      )}
     </DataContext.Provider>
   );
 }
