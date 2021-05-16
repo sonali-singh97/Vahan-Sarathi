@@ -62,8 +62,8 @@ const Layout = () => {
       </Row>
       <div className="main_div">
         {/* {!isAuthenticated ? <BlurOverlay /> :null} */}
-        <Row style={{ height: '500px' }}>
-          <div style={{ height: '500px', width: '40%' }}>
+        <Row style={{ height: '400px' }}>
+          <div style={{ height: '400px', width: '40%' }}>
             <div
               style={{
                 display: 'flex',
@@ -104,7 +104,7 @@ const Layout = () => {
               </div>
             </div>
           </div>
-          <div style={{ height: '500px', width: '55%' }}>
+          <div style={{ height: '400px', width: '55%' }}>
             <div
               style={{
                 display: 'flex',
@@ -118,7 +118,7 @@ const Layout = () => {
             </div>
           </div>
         </Row>
-        <Row style={{ height: '300px' }}>
+        <Row style={{ height: '400px' }}>
           <div style={{ height: '100%', width: '75%' }}>
             <div
               style={{
