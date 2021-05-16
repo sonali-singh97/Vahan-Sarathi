@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Row, Col, Button } from "react-bootstrap";
-import { LogIn, User, Minimize, Maximize, Search, Sun , Moon, HelpCircle  } from 'react-feather';
+import { LogIn, User, Minimize, Maximize, Search, Sun , Moon, HelpCircle, Bell  } from 'react-feather';
 import DataContext from "../context/Data";
 import ThemeContext from "../context/darkTheme";
 import StreamContext from "../context/Stream";
@@ -98,7 +98,7 @@ const fetchData =  (e) => {
 return(
    <div className="header sidebar-open">
    <Row>
-        <Col>
+        <Col md={7}>
           <div className="input-div">
             <label>
               {' '}
@@ -111,61 +111,37 @@ return(
           </div>
         </Col>
 
-        <Col>
+        <Col md={5}>
           <div className="rightbar">
+            <Row>
+              <Col md={3}>
             <span className="mode">
               <a
-                className="text-dark"
+                className={ theme ? "text-light" : "text-dark" }
                 href="#"
                 onClick={() => ThemeToggle(theme)}
               >
                 {theme ? <Sun /> : <Moon />}
               </a>
             </span>
-
+            </Col>
+              
+              <Col  md={3}>
             <span>
-              <a className="text-dark" href="#">
-                <HelpCircle />
+              <a className={ theme ? "text-light" : "text-dark" } href="#">
+                <Bell />
               </a>
             </span>
-
+            </Col>
+           <Col  md={3}>
             <span className="maximize">
-              <a className="text-dark" href="#" onClick={goFull}>
+              <a className={ theme ? "text-light" : "text-dark" } href="#" onClick={goFull}>
                 {fullScreen ? <Minimize /> : <Maximize />}{' '}
               </a>
             </span>
+            </Col>
 
-            {/* <span>
-              {isAuthenticated ? (
-                <Button
-                  type="primary"
-                  onClick={() => {
-                    props.logoutsource == 'dashboard'
-                      ? logout({ returnTo: 'http://localhost:3000/' })
-                      : logout({
-                          returnTo: 'http://localhost:3000/historic_data',
-                        });
-                  }}
-                >
-                  Logout
-                </Button>
-              ) : (
-                <Button
-                  type="primary"
-                  onClick={() =>{props.loginsource == 'dashboard'
-                    ? loginWithRedirect({
-                        redirectUri: 'http://localhost:3000/',
-                      })
-                    : loginWithRedirect({
-                        redirectUri: 'http://localhost:3000/historic_data',
-                      });}
-                    
-                  }
-                >
-                  Login
-                </Button>
-              )}
-            </span> */}
+            </Row>
           </div>
         </Col>
       </Row>

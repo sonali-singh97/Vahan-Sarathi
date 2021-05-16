@@ -30,10 +30,10 @@ const Layout = () => {
   const [mapZoom, setMapZoom] = useState(100);
   const {streamObj, setStreamObj} = useContext(StreamContext)
   const { isAuthenticated, isLoading } = useAuth0();
-  const [count, setCount] = useState(50);
-  const [female, setFemale] = useState(20);
-  const [male, setMale] = useState(30);
-  const [ maskCount, setMaskCount] = useState(36);
+  const [count, setCount] = useState(0);
+  const [female, setFemale] = useState(0);
+  const [male, setMale] = useState(0);
+  const [ maskCount, setMaskCount] = useState(0);
 
   useEffect(()=>{
     if(streamObj!== undefined){
