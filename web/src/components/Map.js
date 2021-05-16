@@ -20,7 +20,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import StopsPin from "./Pin";
 import StopInfo from "./stops-info";
 
-import STOPS from "./stops.json";
+import STOPS from "./stops";
 
 
 

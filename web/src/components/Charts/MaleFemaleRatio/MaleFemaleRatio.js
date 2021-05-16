@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Doughnut, defaults } from 'react-chartjs-2';
+import DataContext from "../../../context/Data";
 
 defaults.animation = false;
 defaults.scale.grid.display = false;
@@ -7,6 +8,9 @@ console.log(defaults.scale.title);
 defaults.scale.title.display = true;
 
 function MaleFemaleRatio() {
+  let {res, setRes} = useContext(DataContext);
+  console.log("inside charts")
+ 
   const [males, setmales] = useState(16);
   const [females, setfemales] = useState(24);
   const [data, setdata] = useState({
@@ -20,6 +24,10 @@ function MaleFemaleRatio() {
       },
     ],
   });
+
+
+
+
   return (
     <div
       style={{

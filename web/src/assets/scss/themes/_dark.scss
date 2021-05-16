@@ -2,7 +2,11 @@ body {
      &.dark{
   
         background-color: $dark-body-background;
-        
+        color: $dark-font-color;
+
+        .header{
+            background: $dark-card-background;
+        }
 
         .card {
             background: $dark-card-background;

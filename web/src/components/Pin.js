@@ -1,7 +1,7 @@
 import React from "react";
 import { MapPin } from "react-feather"
 import icon_bus from './../assets/icons/school-bus.svg'
-
+import icon from "./../assets/images/bus.png"
 
 
 const Pin =(props) => {
@@ -18,17 +18,18 @@ const pinStyle = {
 
 const { size = 20, onClick } = props;
 return(
-    <svg
-        height={size}
-        viewBox="0 0 24 24"
-        style={{
-          ...pinStyle,
-          transform: `translate(${-size / 2}px,${-size}px)`
-        }}
-        onClick={onClick}
-      >
-        <path d={ICON} />
-      </svg>
+    // <svg
+    //     height={size}
+    //     viewBox="0 0 24 24"
+    //     style={{
+    //       ...pinStyle,
+    //       transform: `translate(${-size / 2}px,${-size}px)`
+    //     }}
+    //     onClick={onClick}
+    //   >
+    //     <path d={ICON} />
+    //   </svg>
+    <img src={icon} width="50" height="50" />
 )
 
 }

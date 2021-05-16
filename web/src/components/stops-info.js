@@ -1,23 +1,19 @@
-import React, { PureComponent } from "react";
+import React from "react";
 
-export default class CityInfo extends PureComponent {
-  render() {
-    const { info } = this.props;
-    const displayName = `${info.stop}`;
+const Marker = ({data}) => {
+  
+  
 
     return (
-      <div className="stops-info">
+      <div  className="stops-info">
         <div>
-          {displayName} |{" "}
-          {/* <a
-            target="_new"
-            href={`http://en.wikipedia.org/w/index.php?title=Special:Search&search=${displayName}`}
-          >
-            Wikipedia
-          </a> */}
+          {data.name} 
+     
         </div>
-        <img  src={info.image} />
+        {/* <img  src={info.image} /> */}
       </div>
     );
-  }
+  
 }
+
+export default Marker;

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Row, Col, Card, Container } from 'react-bootstrap';
 // import Map from './Map';
-import Map from './Route';
+//import Map from './Route';
+import Maps from './HereMap';
 
 import CurrentInfo from './CurrentInfo';
-import VelocityTime from './Charts/VelocityTime/VelocityTime';
+//import VelocityTime from './Charts/VelocityTime/VelocityTime';
 import HumidityTime from './Charts/HumidityTime/HumidityTime';
 import TemperatureTime from './Charts/TemperatureTime/TemperatureTime';
 import MaleFemaleRatio from './Charts/MaleFemaleRatio/MaleFemaleRatio';
@@ -28,8 +29,8 @@ import MixedCharts from './../components/Historical Data Charts/MixedCharts/Mixe
 // import Header from "./Header"
 
 const Layout = () => {
-  const [mapCenter, setMapCenter] = useState({ lat: 28.43603, lng: 77.01018 });
-  const [mapZoom, setMapZoom] = useState(20);
+  // const [mapCenter, setMapCenter] = useState({ lat: 28.43603, lng: 77.01018 });
+  const [mapZoom, setMapZoom] = useState(25);
 
   return (
     <div className="page-body">
@@ -37,7 +38,7 @@ const Layout = () => {
         <Col lg={8}>
           <Card>
             <Card.Body>
-              <Map center={mapCenter} zoom={mapZoom} tooltip="Location name" />
+              <Maps  zoom={mapZoom} tooltip="Location name" />
             </Card.Body>
           </Card>
         </Col>
@@ -65,7 +66,7 @@ const Layout = () => {
             </div>
           </div>
         </Col>
-        <Col style={{ height: '100%' }} lg={7}>
+        {/* <Col style={{ height: '100%' }} lg={7}>
           <div
             style={{
               display: 'flex',
@@ -76,7 +77,7 @@ const Layout = () => {
           >
             <VelocityTime />
           </div>
-        </Col>
+        </Col> */}
       </Row>
       <Row style={{ height: '400px' }}>
         <Col lg={9} style={{ height: '100%' }}>
