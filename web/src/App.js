@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container ,Spinner } from 'react-bootstrap';
 import Header from './components/Header';
 import Layout from './components/Layout';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -8,10 +8,11 @@ import Sidebar from "./components/Sidebar.js"
 import { useAuth0 } from '@auth0/auth0-react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import DataContext from './context/Data';
-import ThemeContext from './context/darkTheme';
+import HistoricData from './components/HistoricData';
+import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
 import StreamContext from './context/Stream';
 
-
+const ThemeContext = React.createContext('light');
 
 function App() {
   let [ res , setRes] = useState([[35.77, 67.89]]);
@@ -24,13 +25,22 @@ function App() {
     <ThemeContext.Provider value={{theme, setTheme}}>
     <DataContext.Provider value={{res, setRes}}>
      <div className="page sidebar-open">
-      <Container fluid >
-         <Header />
-        <div className="wrapper">
-          <Sidebar />
-         <Layout />
-        </div>
-      </Container>
+
+     <Switch>
+            <Route exact path="/historic_data">
+              <HistoricData />
+            </Route>
+            <Route exact path="/">
+              <Container fluid>
+                <Header logoutsource="dashboard" loginsource="dashboard" />
+                <div className="wrapper">
+                  <Sidebar />
+                  <Layout />
+                </div>
+              </Container>
+            </Route>
+          </Switch>
+   
       </div>   
       </DataContext.Provider>
       </ThemeContext.Provider>

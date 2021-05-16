@@ -1,19 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts';
+import './../../../assets/scss/components/charts.scss';
+import { useAuth0 } from '@auth0/auth0-react';
+import axios from 'axios';
 
-function MixedCharts() {
-  const [chartLabels, SetchartLebels] = useState([
-    'Day 1',
-    'Day2',
-    'Day3',
-    'Day4',
-    'Day5',
-    'Day6',
-    'Day7',
-  ]);
-  const [total, settotal] = useState([50, 45, 49, 48, 40, 42, 50]);
-  const [withmask, setmask] = useState([34, 4, 14, 20, 30, 11, 22]);
-  const [withoutmask, setwithoutmask] = useState([16, 41, 34, 28, 10, 31, 28]);
+function MixedCharts(props) {
+  const [chartLabels, SetchartLebels] = useState([]);
+  const [total, settotal] = useState([]);
+  const [withmask, setmask] = useState([]);
+  const [withoutmask, setwithoutmask] = useState([]);
+
+  const { isAuthenticated, isLoading } = useAuth0();
 
   const [options, setoptions] = useState({
     chart: {
@@ -63,10 +60,10 @@ function MixedCharts() {
     },
   });
 
-  const [data, setdata] = useState([
+  const [chartdata, setchartdata] = useState([
     {
       name: 'Total',
-     type : 'column',
+      type: 'column',
       data: total,
     },
     {
@@ -81,27 +78,45 @@ function MixedCharts() {
     },
   ]);
 
+  useEffect(() => {
+    const data = props.data;
+    var labels = [];
+    var total_ = [];
+    var withmask_ = [];
+    var withoutmask_ = [];
+    data.map((item) => {
+      labels.push(item.Date);
+      total_.push(item.MALE + item.FEMALE);
+      withmask_.push(item['MASK COUNT']);
+      withoutmask_.push(item['NO MASK']);
+    });
+    SetchartLebels(labels.sort());
+    setmask(withmask_);
+    setwithoutmask(withoutmask_);
+    settotal(total_);
+    setoptions({
+      ...options,
+      xaxis: {
+        ...options.xaxis,
+        categories: labels,
+      },
+    });
+    setchartdata([
+      { ...chartdata, data: total_ },
+      { ...chartdata, data: withmask_ },
+      { ...chartdata, data: withoutmask_ },
+    ]);
+  }, [props]);
+
   return (
     <div
-      style={{
-        display: 'inline-block',
-        width: '920px',
-        height: '425px',
-        padding: '0.5rem',
-        borderStyle: 'none',
-        margin: '1rem',
-        borderRadius: '12px',
-        boxShadow:
-          'rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset',
-      }}
+      className={
+        isAuthenticated
+          ? 'chart_container_mixed'
+          : 'chart_container_mixed_alter'
+      }
     >
-      <Chart
-        options={options}
-        series={data}
-        type="area"
-        width={900}
-        height={410}
-      />
+      <Chart options={options} series={chartdata} type="area" height={350} />
     </div>
   );
 }

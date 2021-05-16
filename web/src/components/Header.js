@@ -119,7 +119,6 @@ return(
                 href="#"
                 onClick={() => ThemeToggle(theme)}
               >
-                {' '}
                 {theme ? <Sun /> : <Moon />}
               </a>
             </span>
@@ -132,16 +131,41 @@ return(
 
             <span className="maximize">
               <a className="text-dark" href="#" onClick={goFull}>
-                {' '}
                 {fullScreen ? <Minimize /> : <Maximize />}{' '}
               </a>
             </span>
 
-            <span>
-              <Button type="primary" onClick={() => logout()}>
-                Logout
-              </Button>
-            </span>
+            {/* <span>
+              {isAuthenticated ? (
+                <Button
+                  type="primary"
+                  onClick={() => {
+                    props.logoutsource == 'dashboard'
+                      ? logout({ returnTo: 'http://localhost:3000/' })
+                      : logout({
+                          returnTo: 'http://localhost:3000/historic_data',
+                        });
+                  }}
+                >
+                  Logout
+                </Button>
+              ) : (
+                <Button
+                  type="primary"
+                  onClick={() =>{props.loginsource == 'dashboard'
+                    ? loginWithRedirect({
+                        redirectUri: 'http://localhost:3000/',
+                      })
+                    : loginWithRedirect({
+                        redirectUri: 'http://localhost:3000/historic_data',
+                      });}
+                    
+                  }
+                >
+                  Login
+                </Button>
+              )}
+            </span> */}
           </div>
         </Col>
       </Row>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useContext} from 'react';
 import { Doughnut, defaults } from 'react-chartjs-2';
 import CountData from '../../CountData/CountData';
 
