@@ -52,7 +52,7 @@ const Layout = () => {
         <Col lg={8}>
           <Card>
             <Card.Body>
-              <Maps  zoom={mapZoom} tooltip="Location name" />
+              <Maps zoom={mapZoom} tooltip="Bus from Pipli to Pehowa" />
             </Card.Body>
           </Card>
         </Col>
@@ -62,8 +62,8 @@ const Layout = () => {
       </Row>
       <div className="main_div">
         {/* {!isAuthenticated ? <BlurOverlay /> :null} */}
-        <Row style={{ height: '500px' }}>
-          <div style={{ height: '500px', width: '40%' }}>
+        <Row style={{ height: '400px' }}>
+          <div style={{ height: '400px', width: '40%' }}>
             <div
               style={{
                 display: 'flex',
@@ -81,15 +81,30 @@ const Layout = () => {
                   percentage={count}
                   count
                 />
-                <CountData logo={maleicon} name="Male" percentage={male} count />
+                <CountData
+                  logo={maleicon}
+                  name="Male"
+                  percentage={male}
+                  count
+                />
               </div>
               <div>
-                <CountData logo={female_icon} name="Female" percentage={female} count />
-                <CountData logo={mask_icon} name="With Mask" percentage={maskCount} count/>
+                <CountData
+                  logo={female_icon}
+                  name="Female"
+                  percentage={female}
+                  count
+                />
+                <CountData
+                  logo={mask_icon}
+                  name="With Mask"
+                  percentage={maskCount}
+                  count
+                />
               </div>
             </div>
           </div>
-          <div style={{ height: '500px', width: '55%' }}>
+          <div style={{ height: '400px', width: '55%' }}>
             <div
               style={{
                 display: 'flex',
@@ -103,7 +118,7 @@ const Layout = () => {
             </div>
           </div>
         </Row>
-        <Row style={{ height: '300px' }}>
+        <Row style={{ height: '400px' }}>
           <div style={{ height: '100%', width: '75%' }}>
             <div
               style={{
