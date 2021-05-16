@@ -14,7 +14,7 @@ Vahan Sarathi is a web-application that utilizes Pravega at its backbone to help
 
 ### SUBSECTIONS OF THE APPLICATION
 * Head Over to [IoT and Data Simulation Section](IoT/)
-* Head Over to [Backend and Data Processing Section](Backend/)
+* Head Over to [Backend and Data Processing Section](backend/)
 * Head Over to [Web Frontend](web/)
 
 ## MORE ON PRAVEGA-GRPC-GATEWAY
