@@ -1,0 +1,38 @@
+.container_ {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 150px;
+  margin: 1rem;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+.sign {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+.name {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  margin-top: 4px;
+  font-weight: 600;
+  text-align: center;
+  color: #f21170;
+}
+.percentage {
+  font-size: 50px;
+  margin: 0;
+  padding: 0;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  text-align: center;
+  color: #002884;
+}

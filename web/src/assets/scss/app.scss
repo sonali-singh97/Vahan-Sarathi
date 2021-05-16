@@ -1,0 +1,20 @@
+@import '~react-pro-sidebar/dist/scss/styles.scss';
+
+/**** utils ****/
+@import "utils/variables";
+
+
+
+/**** base ****/
+@import "base/base";
+
+/**** components ****/
+@import "layout/page-layout";
+@import "components/card";
+@import "components/map";
+@import "components/button";
+@import "components/sidebar";
+
+
+/**** themes ****/
+@import "themes/dark";

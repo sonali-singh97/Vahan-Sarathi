@@ -1,0 +1,96 @@
+.card{
+    margin-bottom: 30px;
+    border: none;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    border-radius: 10px !important;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.info{
+
+    .card{
+        border:none ;
+    }
+
+    .route-card{
+        display: flex;
+        justify-content: space-around;
+        align-items: middle;
+
+        // .text-align{
+        //     text-align: center !important;
+        // }
+    }
+
+    .route  {
+     background-color: rgba($primary-color,0.3);
+     color: $primary-color;
+     &-stops div{
+         display: flex;
+         justify-content: space-around;
+         align-items: middle;
+         margin-bottom: 10px;
+     }
+
+     .route-card{
+        margin-bottom: 10px;
+     }
+    }
+    .current-stop {
+    background-color: rgba($secondary-color,0.3);
+    color: $secondary-color;
+    }
+
+    .eta {
+    background-color: rgba($info-color,0.3);
+    color: $info-color;
+    }
+
+    .velocity{
+        background-color: #ABDF9D;
+        color: #5BBB26;
+    }
+}
+
+.input-div {
+   position: relative;
+//    display: flex;
+//    flex-direction: row;
+//    justify-content: center;
+//    align-items: center;
+
+    label{
+        padding: 0 10px;
+        color:#3F51B5;
+    }
+
+    & input{
+    border:none;
+    padding:0 10px;
+    
+    &::placeholder { 
+        color: $primary-color;
+        opacity: 0.5; 
+      }
+
+    &:focus{
+        outline:none;
+        color: $primary-color;
+    }
+}
+
+&::before{
+    content:"";
+    position: absolute;
+    width: 1px;
+    height: 25px;
+    background: rgba($primary-color,0.2);
+    left: 45px;
+    top: 0px;
+    z-index: 2;
+}
+}
