@@ -1,29 +1,15 @@
-# IoT/Edge Device Code
+# Backend Code
 
-<img src="Images/RPI_prototype.png" alt="Raspberry Pi Node Prototype" width="1000"/>
 
-## Contents of the IoT Edge Node
-
-1. Compute Units
-   * Raspberry Pi 4
-   
-2. Sensors
-   * PIR, Proximity and Ultrasonic Sensors (Detecting and Counting passengers Entering or Exiting the Vehicle)
-   * Gyroscope and Accelerometer (Detecting Velocity of Vehicle in 3-D)
-   * GPS and Barometer (Detecting Location and Altitude of the Vehicle)
-   * DHT-11 (Detecting the vehicle's environmental Temperature and Humidity)
-   * USB Camera (Detecting the age, gender and mask of passengers Entering or Exiting the Vehicle)
-
-## Developing & Executing the Simulation Code - Real-Time Data
-
+## Developing & Executing 
 1. Clone this repo. 
     ``` bash
     git clone https://github.com/sonali-singh97/Vahan-Sarathi.git
     ```
 
-2. Navigate to `IoT` subfolder in cloned repository.
+2. Navigate to `backend` subfolder in cloned repository.
     ``` bash 
-    cd Vahan-Sarathi/IoT
+    cd Vahan-Sarathi/backend
     ```
 
 3. Create a Virtual Environment.
@@ -68,42 +54,9 @@
          'port':'9071'
          }
          
-9. In `main.py` replace `20.197.27.68:54672` with your pravega-grpc-getway IP address and port. 
+9. In `main.py` replace `127.0.0.1:54672` with your pravega-grpc-getway IP address and port. 
     
 10. Run `python main.py`. 
 
-11. Multiple Vehicles can be simulated by running the following commands
+11. Backend running at `127.0.0.1:8000`. 
 
-    1. Navigate to `Multi_vehicle_simulation`
-        ```bash
-        cd ./Multi_vehicle_simulation
-        ```
-    2. Run different python files like `route1_bus1.py` or `route1_bus2.py` to simulate different buses running on different path.
-
-    1. Navigate back to `IoT`
-       ```bash
-       cd ../
-       ```
-
-
-## Developing & Executing the Simulation Code - Historic Data on Cassandra
-
-
-1. Navigate to `Data_Fabrication`
-   ```bash
-   cd ./Data_Fabrication
-   ```
-
-2. Create a `config.py` file with following contents. 
-    ``` python3 
-    config = {
-         'username': "username,
-         'password': 'pass123',
-         'contactPoint': 'demo-cassandra.com',
-         'connectionString': 
-         'port':'9071'
-         }
-
-3. Run `cassandra_datagen.py` to populate the Casandra database.
-    
-4. Make edits to `cassandra_datagen.py` based on data needs and amount
