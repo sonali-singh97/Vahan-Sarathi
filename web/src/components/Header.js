@@ -111,7 +111,7 @@ const Header = (props) => {
               </a>
             </span>
 
-            <span>
+            {/* <span>
               {isAuthenticated ? (
                 <Button
                   type="primary"
@@ -141,7 +141,7 @@ const Header = (props) => {
                   Login
                 </Button>
               )}
-            </span>
+            </span> */}
           </div>
         </Col>
       </Row>

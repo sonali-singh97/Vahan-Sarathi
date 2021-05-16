@@ -20,7 +20,6 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 const Maps = (props) => {
 
-  
 
   return (
     <div className="map">
