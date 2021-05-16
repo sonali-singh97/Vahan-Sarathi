@@ -1,200 +1,153 @@
-import { Point } from "mapbox-gl";
 
-const geojson = {
-  type: 'FeatureCollection',
-  features: [{
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [ 76.584432, 29.9844213]
-    },
-    properties: {
-      title: 'Pehowa Bustand',
-      description: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
-    }
+import icon from "./../assets/images/bus.png"
+import dest from "./../assets/images/icon.png"
+import L from "leaflet";
+
+const destIcon = new L.Icon({
+  iconUrl: icon,
+  iconSize: [40, 40],
+  iconAnchor: [17, 46],
+  popupAnchor: [0, -46],
+});
+
+const stopIcon = new L.Icon({
+  iconUrl: dest,
+  iconSize: [50, 50],
+  iconAnchor: [17, 46], 
+  popupAnchor: [0, -46], 
+});
+
+
+const geojson =[{
+      coordinates: [  29.9844213 , 76.584432],
+      name: 'Pehowa Bustand',
+      image: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no",
+      icon: destIcon
   },
 
   {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [  76.5851455 , 29.9841564],
+   
+      coordinates: [   29.9841564, 76.5851455 ],
+      icon: stopIcon,
+      name: "Pehowa Busstop",
+      image: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
     
-    },
-    properties: {
-      title: "Pehowa Busstop",
-      description: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
-    }
   },
 
   {
-    type: 'Feature',
-    geometry: {
-      type: "Point",
-      coordinates:  [ 76.5846198 ,29.9816055 ],
-    },
-    properties: {
-      title: "Pehowa Main Chowk",
-      description: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
-    }
+
+    coordinates: [ 29.9816055,   76.5846198 ],
+      icon: stopIcon,
+      name: "Pehowa Main Chowk",
+      image: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
+    
   },
   {
-    type: 'Feature',
-    geometry: {
-      type: "Point",
-      coordinates:  [   76.6092317 ,29.9763965 ]
-    },
-    properties: {
-      title: "Ambala-Hisar Highway",
-      description: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
-    }
+    
+      coordinates:  [  29.9763965 ,  76.6092317 ],
+      icon : stopIcon,
+      name: "Ambala-Hisar Highway",
+      image: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
+    
   },
 
   {
-    type: 'Feature',
-    geometry: {
-      type: "Point",
-      coordinates:  [  76.6597753 , 29.9676973 ],
-    },
-    properties: {
-      title:"Murtzapur Stop",
-      description: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
-    }
+      coordinates:  [  29.9676973,  76.6597753  ],
+      icon: stopIcon,
+      name:"Murtzapur Stop",
+      image: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
+    
   },
 
   {
-    type: 'Feature',
-    geometry: {
-      type:'Point' ,
-      coordinates:  [   76.7135053, 29.9586301  ],
-    },
-    properties: {
-      title: "KITM-DPS Stop",
-      description: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
-    }
+      coordinates:  [ 29.9586301,   76.7135053  ],
+      icon : stopIcon,
+      name: "KITM-DPS Stop",
+      image: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
+    
   },
 
   {
-    type: 'Feature',
-    geometry: {
-      type: "Point",
-      coordinates:  [ 76.7297058 , 29.956864 ],
-    },
-    properties: {
-      title: "Lohar Majra Stop",
-      description: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
-    }
+      coordinates:  [ 29.956864 ,  76.7297058 ],
+      icon : stopIcon,
+      name: "Lohar Majra Stop",
+      image: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
+    
   },
 
   {
-    type: 'Feature',
-    geometry: {
-      type:  "Point",
-      coordinates: [ 76.584432, 29.9844213]
-    },
-    properties: {
-      title: "Jyotisar Busstop",
-      description: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
-    }
+      coordinates: [ 29.95997514,  76.7731811],
+      icon : stopIcon,
+      name: "Jyotisar Busstop",
+      image: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
+    
   },
 
   {
-    type: 'Feature',
-    geometry: {
-      type:  "Point",
-      coordinates:  [  76.7731811, 29.9599751  ],
-    },
-    properties: {
-      title: "Narkatari-Gurukul Stop",
-      description: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
-    }
+      coordinates:  [ 29.9599751,  76.7731811  ],
+     icon : stopIcon,
+      name: "Narkatari-Gurukul Stop",
+      image: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
+    
   },
 
   {
-    type: 'Feature',
-    geometry: {
-      type:  "Point",
-      coordinates:  [   76.8101527, 29.9629588 ],
-    },
-    properties: {
-      title:  "Kurukshetra University-LNJP stop",
-      description: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
-    }
+      coordinates:  [   29.9629588 , 76.8101527, ],
+      icon : stopIcon,
+      name:  "Kurukshetra University-LNJP stop",
+      image: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
+    
   },
 
   {
-    type: 'Feature',
-    geometry: {
-      type:  "Point",
-      coordinates:   [ 76.8140795, 29.964353  ],
-    },
-    properties: {
-      title: "Birla Mandir - BharamSarovar",
-      description: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
-    }
+      coordinates:   [  29.964353 , 76.8140795, ],
+      icon : stopIcon,
+      name: "Birla Mandir - BharamSarovar",
+      image: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
+  
   },
 
   {
-    type: 'Feature',
-    geometry: {
-      type:  "Point",
-      coordinates:       [  76.8281557 , 29.9669183  ],
-    },
-    properties: {
-      title: "Gurudwara 6th Patshahi - Sanhiet Sarovar",
-      description: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
-    }
+      coordinates:       [ 29.9669183 ,  76.8281557 ,  ],
+      icon : stopIcon,
+      name: "Gurudwara 6th Patshahi - Sanhiet Sarovar",
+      image: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
+    
   },
 
   {
-    type: 'Feature',
-    geometry: {
-      type:  "Point",
-      coordinates:  [   76.8375434 , 29.9727273   ],
-    },
-    properties: {
-      title:   "Old Bus stand Kurukshetra",
-      description: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
-    }
+      coordinates:  [  29.9727273 ,   76.8375434 ,  ],
+     icon: stopIcon,
+      name:   "Old Bus stand Kurukshetra",
+      image: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
+    
   },
 
   {
-    type: 'Feature',
-    geometry: {
-      type:  "Point",
-      coordinates:  [   76.8565871 , 29.9734615],
-    },
-    properties: {
-      title: "Sector 13 - Aggarsain Chowk",
-      description: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
-    }
+      coordinates:  [  29.9734615,   76.8565871 ,],
+       icon : stopIcon,
+      name : "Sector 13 - Aggarsain Chowk",
+      image: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
+    
+  },
+
+  { 
+      coordinates: [ 29.9741028,  76.8655028 , ],
+      icon : stopIcon,
+      name: "New Bus Stand Kurukshetra",
+      image: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
+    
   },
 
   {
-    type: 'Feature',
-    geometry: {
-      type:  "Point",
-      coordinates: [    76.8655028 ,29.9741028 ],
-    },
-    properties: {
-      title: "New Bus Stand Kurukshetra",
-      description: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
-    }
+      coordinates:  [  29.9789633  , 76.8923034  ],
+       icon : destIcon,
+      name: "Pipli",
+      image: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
+    
   },
+];
 
-  {
-    type: 'Feature',
-    geometry: {
-      type:  "Point",
-      coordinates:  [  76.8923034 ,  29.9789633    ]
-    },
-    properties: {
-      title: "Pipli",
-      description: "https://lh5.googleusercontent.com/p/AF1QipPpR0cLA6EQoKc7TlX6uhC9RSwkShpiPTkURCnX=w408-h306-k-no"
-    }
-  },
-]
-};
 export default geojson;
 
 // [

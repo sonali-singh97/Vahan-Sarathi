@@ -24,15 +24,21 @@
   .leaflet-container {
     height: 100%;
   }
+
+  .marker{
+  img{
+    max-width:100%
+  }
+}
 }
 
-.marker {
-  background-color: red;
-  background-size: cover;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  cursor: pointer;
-}
+// .marker {
+//   background-color: red;
+//   background-size: cover;
+//   width: 24px;
+//   height: 24px;
+//   border-radius: 50%;
+//   cursor: pointer;
+// }
 
 

@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup,Tooltip} from 'react-leaflet';
 import L from 'leaflet';
 import icon_bus from './../assets/icons/school-bus.svg'
 import DataContext from "../context/Data";
+import points from "./stops";
 
 
 let DefaultIcon = L.icon({
@@ -52,10 +53,29 @@ const Maps = (props) => {
         />
         <Marker position={pos}>
           <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
+            <b>Bus from Pipli to Pehowa</b>
           </Popup>
           <Tooltip>{props.tooltip}</Tooltip>
         </Marker>
+
+         {points.map((stop, idx) => (
+                <Marker
+                  position={stop.coordinates}
+                  icon={stop.icon}
+                  key={idx}
+                >
+                  <Popup>
+                    <div className="marker">
+                    <h6>
+                      {stop.name}
+                    </h6>
+                    <div>
+                      <img  src={stop.image}/>
+                    </div>
+                    </div>
+                  </Popup>
+                </Marker>
+              ))}
       </MapContainer>
     </div>
   );
