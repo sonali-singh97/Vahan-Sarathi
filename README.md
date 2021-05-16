@@ -1,5 +1,26 @@
 # Vahan-Sarathi
 
+
+<p align="center">
+  <a href="https://github.com/sonali-singh97/Vahan-Sarathi/">
+   <img src="https://madewithlove.now.sh/in?heart=true&colorA=%23ff0000&colorB=%23050505&template=plastic" alt="Made with love in India">
+    <img alt="GitHub" src="https://img.shields.io/github/license/sonali-singh97/Vahan-Sarathi?style=plastic">
+    <img src="https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8Fby%20-Unnamed-green">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/ankuraxz/tagonizer/">
+    <img src ="https://img.shields.io/github/issues-raw/sonali-singh97/Vahan-Sarathi" alt = "Open Issues">
+    <img src ="https://img.shields.io/github/issues-closed-raw/sonali-singh97/Vahan-Sarathi" alt = "Closed Issues">
+    <img src ="https://img.shields.io/github/issues-pr-raw/sonali-singh97/Vahan-Sarathi" alt = "Open Pull Requests">
+    <img src ="https://img.shields.io/github/issues-pr-closed/sonali-singh97/Vahan-Sarathi" alt = "Closed Pull Requests">
+  </a>
+ </p>
+
+
+
+
 ## PROBLEM STATEMENT
 COVID-19  virus  is  on  a  rise throughout the world, especially in countries like India with a huge population and where people are much more dependent on public transports like Buses and local  trains.  This  project focuses  on  resolving  this issue, by keeping a check on the number of people travelling in a public vehicle and number of people wearing masks etc. This information is provided to other passengers, planning to travel in that vehicle.
 
