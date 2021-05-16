@@ -23,6 +23,7 @@
 
   .leaflet-container {
     height: 100%;
+    z-index:1;
   }
 
   .leaflet-popup-content {

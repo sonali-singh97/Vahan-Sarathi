@@ -16,13 +16,28 @@
         border:none ;
     }
 
+    .route-card{
+        display: flex;
+        justify-content: space-around;
+        align-items: middle;
+
+        // .text-align{
+        //     text-align: center !important;
+        // }
+    }
+
     .route  {
      background-color: rgba($primary-color,0.3);
      color: $primary-color;
-     &-stops{
+     &-stops div{
          display: flex;
-         justify-content: space-between;
+         justify-content: space-around;
          align-items: middle;
+         margin-bottom: 10px;
+     }
+
+     .route-card{
+        margin-bottom: 10px;
      }
     }
     .current-stop {
@@ -33,6 +48,11 @@
     .eta {
     background-color: rgba($info-color,0.3);
     color: $info-color;
+    }
+
+    .velocity{
+        background-color: #ABDF9D;
+        color: #5BBB26;
     }
 }
 
