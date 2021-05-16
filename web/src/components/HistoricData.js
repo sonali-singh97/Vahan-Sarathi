@@ -17,9 +17,10 @@ import PressureBarChart from './Historical Data Charts/PressureBarChart/Pressure
 import MixedChart from './Historical Data Charts/MixedCharts/MixedCharts';
 import BlurOverlay from './../components/BlurOverlay/BlurOverlay';
 import { useAuth0 } from '@auth0/auth0-react';
-import { Search } from 'react-feather';
+import { Search  } from 'react-feather';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
+import Sidebar from './../components/Sidebar'
 function HistoricData() {
   const { isAuthenticated } = useAuth0();
 
@@ -60,7 +61,7 @@ function HistoricData() {
   };
   return (
     <div style={{ position: 'relative' }}>
-      {/* {isAuthenticated ? null : <BlurOverlay />} */}
+      <Sidebar/>
       <Container fluid>
         <Header loginsource="historical_data" logoutsource="historical_data" />
         <div style={{ marginTop: '6rem' }}>
