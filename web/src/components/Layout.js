@@ -52,7 +52,7 @@ const Layout = () => {
         <Col lg={8}>
           <Card>
             <Card.Body>
-              <Maps  zoom={mapZoom} tooltip="Location name" />
+              <Maps zoom={mapZoom} tooltip="Bus from Pipli to Pehowa" />
             </Card.Body>
           </Card>
         </Col>
@@ -81,11 +81,26 @@ const Layout = () => {
                   percentage={count}
                   count
                 />
-                <CountData logo={maleicon} name="Male" percentage={male} count />
+                <CountData
+                  logo={maleicon}
+                  name="Male"
+                  percentage={male}
+                  count
+                />
               </div>
               <div>
-                <CountData logo={female_icon} name="Female" percentage={female} count />
-                <CountData logo={mask_icon} name="With Mask" percentage={maskCount} count/>
+                <CountData
+                  logo={female_icon}
+                  name="Female"
+                  percentage={female}
+                  count
+                />
+                <CountData
+                  logo={mask_icon}
+                  name="With Mask"
+                  percentage={maskCount}
+                  count
+                />
               </div>
             </div>
           </div>
